@@ -5,6 +5,7 @@ import React from 'react';
 import Loading from '../loading';
 import IProduct from '@/Types/Global';
 import RelatedProduct from '@/components/RelatedProduct/RelatedProduct';
+import { useRouter } from 'next/navigation';
 
 const ProductDetails = ({course}) => {
   const {_id, title, price, seat, img, rating, description, category, reviews, status} = course;
@@ -17,7 +18,12 @@ const ProductDetails = ({course}) => {
   if (!isLoading && !isError && courses?.length === 0) content = <p className='text-lg text-destructive'>There is no Book</p>;
   if (!isLoading && !isError && courses?.length > 0) {content = courses.filter(course => course._id !== _id).map(course => <RelatedProduct key={course._id} course={course} />)}
 
-  console.log(course)
+  const router = useRouter();
+  
+  const handleOrder = () => {
+    router.push(`/orders`)
+  }
+  
   return (
    <>
          <Col sm={12} lg={18}>
@@ -33,7 +39,9 @@ const ProductDetails = ({course}) => {
     <p>Category : {category}</p>
     <p>Seat Available {seat}</p>
     <p>Availability: {seat? 'In Stock' : 'Out of Stock'}</p>
-    <Button style={{marginTop: '10px'}}>Add to cart</Button>
+    <Button
+     onClick={()=> handleOrder()} 
+     style={{marginTop: '10px'}}>Add to cart</Button>
   </Card>
   <div style={{margin: '20px 0px'}}>
   <h1 style={{margin: '20px 0px'}}>Reviews:</h1>
