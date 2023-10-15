@@ -19,9 +19,9 @@ const Cart = ({order}) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-auto px-4 text-right md:w-1/6 lg:w-2/12 ">
+                    <div className="w-auto px-4 text-right md:w-1/6 lg:w-2/12 ">
                             <p className="text-lg font-bold text-blue-500 dark:text-gray-400">{price}</p>
-                        </div>
+                    </div>
               </div>
         </div>
   );

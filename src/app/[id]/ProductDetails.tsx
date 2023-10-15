@@ -6,6 +6,7 @@ import Loading from '../loading';
 import IProduct from '@/Types/Global';
 import RelatedProduct from '@/components/RelatedProduct/RelatedProduct';
 import { useRouter } from 'next/navigation';
+import { CommentOutlined } from '@ant-design/icons';
 
 const ProductDetails = ({course}) => {
   const {_id, title, price, seat, img, rating, description, category, reviews, status} = course;
@@ -15,8 +16,12 @@ const ProductDetails = ({course}) => {
 
   let content = null;
   if (isLoading) content = <Loading/>
-  if (!isLoading && !isError && courses?.length === 0) content = <p className='text-lg text-destructive'>There is no Book</p>;
-  if (!isLoading && !isError && courses?.length > 0) {content = courses.filter(course => course._id !== _id).map(course => <RelatedProduct key={course._id} course={course} />)}
+  if (!isLoading && !isError && courses?.length === 0) content = <p className='text-lg text-destructive'>There is no Related Product</p>;
+  if (!isLoading && !isError && courses?.length > 0) {content = courses.
+    filter(course => {
+      return course._id !== _id && course.category === category
+    })
+    .map(course => <RelatedProduct key={course._id} course={course} />)}
 
   const router = useRouter();
   
@@ -26,51 +31,51 @@ const ProductDetails = ({course}) => {
   
   return (
    <>
-         <Col sm={12} lg={18}>
+   {/* Product details */}
+    <div className='lg:w-4/5'>
       <div>
-    <Card
-    style={{ width: 600 }}
-    cover={ <img alt="example" src={img} /> }
-  >
-    <h1>Title: {title}</h1>
-    <p>Price : {price}</p>
-    <p>{description}</p>
+        <div>
+        <img alt="course-pic" src={img} className='w-2/3'/>
+        <div className='my-4'>
+          <div>
+          <h1 className='text-2xl'>Title: {title}</h1>
+          <p className='text-xl'>Price : {price}</p>
+        </div>
+        <div>
+           <p className='text-xl'>Category : {category}</p>
+           <p className='text-xl'>Seat Available {seat}</p>
+           <p className='text-xl'>Availability: {seat? 'In Stock' : 'Out of Stock'}</p>
+        </div>
 
-    <p>Category : {category}</p>
-    <p>Seat Available {seat}</p>
-    <p>Availability: {seat? 'In Stock' : 'Out of Stock'}</p>
-    <Button
-     onClick={()=> handleOrder()} 
-     style={{marginTop: '10px'}}>Add to cart</Button>
-  </Card>
-  <div style={{margin: '20px 0px'}}>
-  <h1 style={{margin: '20px 0px'}}>Reviews:</h1>
-  <div>
-    {
-      reviews.map(review => 
-      <h1 key={review.i}>{review}</h1>
-      )
-    }
-  </div>
-</div>
+        
+        <p className='text-xl'>{description}</p>
+        </div>
+        <button onClick={()=> handleOrder()}  className="inline-block mt-2 px-6 py-2.5 bg-blue-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-600">Add to cart</button>
+       </div>
+      <div className='my-8'>
+      <h1 className='my-4 text-2xl'>Reviews:</h1>
+      <div>
+        {
+          reviews.map(
+            review => (
+            <div key={review.i}>
+             
+             <h1 className='text-xl'> <CommentOutlined/> {review}</h1>
+            </div>
+            )
+          )
+        }
+      </div>
    </div>
-      </Col>
-
-        <Col sm={12} lg={6}>
-          Related products
+      </div>
+    {/* Related Product */}
+    </div>
+        <div className='lg:w-1/5'>
+          <h1 className='text-center'>Related products</h1>
           {
             content
           }
-          {/* <div className='border rounded-md'>
-            <div style={{display: 'flex', alignContent: 'space-between'}}>
-              <img src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" alt="img" className='h-20'/>
-              <div className='ml-4 flex flex-col mt-4'>
-                <h1>Title: This is title</h1>
-                <p>Price: price</p>
-              </div>
-            </div>
-          </div> */}
-        </Col>
+    </div>
    </>
   );
 };

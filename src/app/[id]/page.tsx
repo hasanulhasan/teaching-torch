@@ -21,18 +21,13 @@ const DetailPage = () => {
   return (
     <div>
       <Nav/>
-      <div style={{ margin: '20px 20%'}}>
-      <div style={{ margin: '20px auto',}}>
-      <h1 style={{
-        textAlign: 'center',
-        fontSize: '30px',
-        fontWeight: 'bolder'
-      }}>{course?.title}</h1>
+      <div className='mx-16'>
+      <h1 className='text-center font-extrabold text-4xl my-4'>{course?.title}</h1>
+        <div className='flex flex-col lg:flex-row'>
+        { content }
+        </div>
       </div>
-      <Row gutter={24}>
-           { content }
-      </Row>
-    </div>
+      
   </div>
   );
 };

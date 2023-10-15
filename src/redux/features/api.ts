@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { url } from 'inspector';
 
 export const api = createApi({
   reducerPath: 'api',
@@ -17,7 +18,14 @@ export const api = createApi({
       query: () => '/orders',
       providesTags: ['Orders']
     }),
+    postReview: builder.mutation({
+      query: (data) => ({
+        url: '/feedbacks/create-feedback',
+        method: 'POST',
+        body: data
+      }),
+    }),
   }),
 })
 
-export const {useGetProductsQuery, useGetProductQuery, useGetOrdersQuery} = api;
+export const {useGetProductsQuery, useGetProductQuery, useGetOrdersQuery, usePostReviewMutation} = api;

@@ -8,7 +8,7 @@ const About = () => {
             <div className="flex flex-wrap ">
                 <div className="w-full px-4 mb-10 lg:w-1/2 lg:mb-0">
                     <div className="relative lg:max-w-md">
-                        <img src="https://i.postimg.cc/rF0MKfBV/pexels-andrea-piacquadio-3760263.jpg" alt="aboutimage"
+                        <img src="https://www.itb.ac.id/files/images/1587642321.jpg" alt="aboutimage"
                             className="relative z-10 object-cover w-full rounded h-96"/>
                         <div
                             className="absolute bottom-0 right-0 z-10 p-8 bg-white border-4 border-blue-500 rounded shadow dark:border-blue-400 lg:-mb-8 lg:-mr-11 sm:p-8 dark:text-gray-300 dark:bg-gray-800 ">
