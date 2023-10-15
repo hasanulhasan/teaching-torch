@@ -7,6 +7,7 @@ import Nav from '@/components/Home/Nav'
 import Newsletter from '@/components/Home/Newsletter'
 import PopularCategory from '@/components/Home/PopularCategory'
 import Reviews from '@/components/Home/Reviews'
+import Counters from '@/components/Home/Counters'
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <Reviews/>
       <Faqs/>
       <Newsletter/>
+      <Counters/>
       <FooterPage/>
     </div>
   )

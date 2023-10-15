@@ -80,24 +80,21 @@ const Courses = () => {
   if (!isLoading && !isError && courses?.length > 0) {content = courses.map(course => <Course key={course._id} course={course} />)}
 
   return (
-    <div style={{
-      margin: '20px 10%',
-    }}>
-      <div style={{
-        margin: '30px auto',
-      }}>
-      <h1 style={{
-        textAlign: 'center',
-        fontSize: '30px',
-        fontWeight: 'bolder'
-      }}>Explore Popular Courses</h1>
-      </div>
-      <Row gutter={24}>
-        {
-          content
-        }
-       </Row>
-    </div>
+    <section className="flex items-center bg-gray-100 lg:h-screen font-poppins dark:bg-gray-900 ">
+        <div className="justify-center max-w-6xl px-4 py-4 mx-auto lg:py-0">
+        <div className="mb-20 text-center">
+                <h1 className="mb-4 text-3xl font-bold dark:text-white"> Our Popular Courses </h1>
+                <p className="max-w-xl mx-auto text-gray-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quae quam nostrum harum non in at
+                    eaque quibusdam eum ratione.</p>
+            </div>
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 md:grid-cols-2">
+                {
+                  content
+                }
+            </div>
+        </div>
+    </section>
   );
 };
 

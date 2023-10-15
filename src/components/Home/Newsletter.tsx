@@ -1,7 +1,7 @@
 
 const Newsletter = () => {
   return (
-    <section className="flex items-center my-12 bg-gray-100 font-poppins dark:bg-gray-800 ">
+    <section className="flex items-center mb-12 bg-gray-100 font-poppins dark:bg-gray-800 ">
         <div className="justify-center flex-1 px-6 py-16 mx-auto shadow bg-gray-50 dark:bg-gray-900 lg:py-16 md:px-7">
             <div className="max-w-xl mx-auto text-center">
                 <h2
