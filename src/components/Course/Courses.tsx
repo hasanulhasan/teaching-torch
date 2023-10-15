@@ -1,5 +1,4 @@
 'use client'
-import { Row } from "antd";
 import Course from "./Course";
 import { useGetProductsQuery } from "@/redux/features/api";
 import Loading from "@/app/loading";
@@ -24,7 +23,7 @@ const Courses = () => {
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quae quam nostrum harum non in at
                     eaque quibusdam eum ratione.</p>
             </div>
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 md:grid-cols-2 cursor-pointer">
                 {
                   content
                 }

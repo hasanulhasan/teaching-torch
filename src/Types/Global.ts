@@ -1,6 +1,7 @@
 export default interface IProduct {
   _id?: string;
   title: string;
+  instructors: string;
   img: string;
   price: string;
   category: string;

@@ -31,7 +31,7 @@ const Sidebar = () => {
           fontWeight: 'bold',
           marginBottom: '1rem'
         }}>
-          PH-University
+          Teaching Torch
         </div>
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={sidebarItems()} />
     </Sider>

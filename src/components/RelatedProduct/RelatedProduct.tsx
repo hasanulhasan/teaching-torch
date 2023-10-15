@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
+import IProduct from '@/Types/Global';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
-const RelatedProduct = ({course}) => {
+const RelatedProduct = ({course}: IProduct) => {
   const {_id, title, price, img} = course;
 
   const router = useRouter();

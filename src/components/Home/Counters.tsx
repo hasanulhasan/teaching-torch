@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import CountUp from 'react-countup';
 import ScrollTrigger from 'react-scroll-trigger';
 
-
 const Counters = () => {
     const [counterOn, setCounterOn] = useState(false)
     return (

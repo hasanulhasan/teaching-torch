@@ -1,7 +1,7 @@
-import { Badge, Button, Card, Col, Form, Row, Space } from "antd";
+import { Col, Row} from "antd";
 import Image from "next/image";
 import BannerImg from './../../assets/banner.png'
-import Title from "antd/es/typography/Title";
+import Link from "next/link";
 
 const Banner = () => {
   return (
@@ -10,7 +10,7 @@ const Banner = () => {
     justify="center"
     align="middle"
     style={{
-      minHeight: '80vh'
+      minHeight: '100vh'
     }}>
     <Col sm={12} md={16} lg={10}>
       <Image src={BannerImg} alt="banner image" width={700}/>
@@ -25,11 +25,7 @@ const Banner = () => {
         margin: '15px 0px',
         fontSize: '22px'
       }}>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem mollitia nobis doloribus eveniet saepe quos architecto</p>
-      <Button
-      style={{
-        color: 'black',
-        fontWeight: 'bolder'
-      }} type="primary" size="large">View All Courses</Button>
+      <Link href='/courses'><button className="inline-block mt-2 px-6 py-2.5 bg-blue-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-600">View All Courses</button></Link>
     </Col>
   </Row>
     </div>

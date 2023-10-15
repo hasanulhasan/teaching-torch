@@ -1,7 +1,7 @@
 import About from '@/components/Home/About'
 import Banner from '@/components/Home/Banner'
 import Courses from '@/components/Course/Courses'
-import Faqs from '@/components/Home/Faqs'
+import Faqs from '@/components/Home/Features'
 import FooterPage from '@/components/Home/Footer'
 import Nav from '@/components/Home/Nav'
 import Newsletter from '@/components/Home/Newsletter'
@@ -14,7 +14,7 @@ export default function Home() {
     <div>
       <Nav/>
       <Banner/>
-      <PopularCategory/>
+      {/* <PopularCategory/> */}
       <Courses/>
       <About/>
       <Reviews/>

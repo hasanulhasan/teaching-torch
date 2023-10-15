@@ -39,12 +39,20 @@ function AppHeader() {
             key: "login",
           },
           {
+            label: <Link href={`/feedback`}>Feedback</Link>,
+            key: "feedback",
+          },
+          {
+            label: <Link href={`/courses`}>Courses</Link>,
+            key: "courses",
+          },
+          {
             label: <button onClick={()=> handleLogout()}>Logout</button>,
             key: "Logout",
           },
           {
-            label: "Courses",
-            key: "courses",
+            label: "Category",
+            key: "category",
             children: [
               {
                 label: "Python Learning",
@@ -53,11 +61,7 @@ function AppHeader() {
               {
                 label: "Javascript Learning",
                 key: "Javascript learning",
-              },
-              {
-                label: "Java Learning",
-                key: "java learning",
-              },
+              }
             ],
           }
         ]}

@@ -2,8 +2,6 @@ import { MenuProps } from "antd";
 import {ProfileOutlined, TableOutlined} from "@ant-design/icons"
 import Link from "next/link";
 
-// import {USER_ROLE} from './role'
-
 export const sidebarItems = () => {
   const defaultSidebarItems: MenuProps["items"] = [
     {

@@ -2,9 +2,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 'use client'
 import { useGetOrdersQuery } from '@/redux/features/api';
-import React from 'react';
 import Nav from '@/components/Home/Nav'
-import { Footer } from 'antd/es/layout/layout';
 import Cart from '@/components/Cart/Cart';
 import Loading from '../loading';
 

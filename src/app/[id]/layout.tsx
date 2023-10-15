@@ -1,15 +1,16 @@
 import FooterPage from "@/components/Home/Footer"
-import Providers from "@/lib/Providers"
 import { Metadata } from "next"
+import Nav from '@/components/Home/Nav'
 
 export const metadata: Metadata = {
-  title: 'Order',
+  title: 'Course Details',
   description: 'Build To Better',
 }
 
 export default function OrderLayout( {children}: {  children: React.ReactNode }) {
   return (
     <div>
+        <Nav/>
         {children}
         <FooterPage/>
     </div>

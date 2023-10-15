@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 import React from 'react';
-import Nav from '@/components/Home/Nav'
+
 import { Button, Card, Col, Row } from 'antd';
 import { useParams } from 'next/navigation';
 import { useGetProductQuery } from '@/redux/features/api';
@@ -20,14 +20,12 @@ const DetailPage = () => {
 
   return (
     <div>
-      <Nav/>
       <div className='mx-16'>
       <h1 className='text-center font-extrabold text-4xl my-4'>{course?.title}</h1>
         <div className='flex flex-col lg:flex-row'>
         { content }
         </div>
       </div>
-      
   </div>
   );
 };

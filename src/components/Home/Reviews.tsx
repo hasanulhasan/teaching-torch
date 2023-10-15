@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { Card, Col, Row } from 'antd';
 import React from 'react';
 
 const Reviews = () => {

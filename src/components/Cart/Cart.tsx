@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { useGetOrdersQuery } from "@/redux/features/api";
 
 const Cart = ({order}) => {
   const {_id, title, price, category, img} = order;
@@ -20,7 +19,7 @@ const Cart = ({order}) => {
                             </div>
                         </div>
                     <div className="w-auto px-4 text-right md:w-1/6 lg:w-2/12 ">
-                            <p className="text-lg font-bold text-blue-500 dark:text-gray-400">{price}</p>
+                        <p className="text-lg font-bold text-blue-500 dark:text-gray-400">{price}</p>
                     </div>
               </div>
         </div>

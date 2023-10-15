@@ -1,9 +1,8 @@
 import FooterPage from "@/components/Home/Footer"
-import Providers from "@/lib/Providers"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: 'Order',
+  title: 'SignUp',
   description: 'Build To Better',
 }
 
