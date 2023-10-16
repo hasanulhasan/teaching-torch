@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form"
 
 type Inputs = {
+  name: string
   email: string
   password: string
 }
@@ -31,11 +32,11 @@ const page = () => {
 
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         console.log(data)
-        const {email, password} = data;
+        const {name, email, password} = data;
         try {
             await dispatch(createUser({email, password})).then(()=> {
                 const role = 'user'
-                createUserInDB({email, role})
+                createUserInDB({name, email, role})
             })
         } catch (error) {
             console.log(error)
@@ -72,6 +73,10 @@ const page = () => {
                                 Sign up here</h2>
                             <form onSubmit={handleSubmit(onSubmit)} className="mt-4 lg:mt-7 ">
                                 <div className="">
+                <input type="text" {...register("name", { required: true })} className="w-full px-4 py-3 mt-2 bg-white rounded-lg lg:py-5 dark:text-gray-300 dark:bg-gray-700 -gray-800" name="name" placeholder="Enter your name"/>
+                                </div>
+                {errors.name && <span className='text-danger-600 mt-1'>This field is required</span>}
+                                <div className="mt-4 lg:mt-7">
                 <input type="email" {...register("email", { required: true })} className="w-full px-4 py-3 mt-2 bg-white rounded-lg lg:py-5 dark:text-gray-300 dark:bg-gray-700 -gray-800" name="email" placeholder="Enter your email"/>
                                 </div>
                 {errors.email && <span className='text-danger-600 mt-1'>This field is required</span>}

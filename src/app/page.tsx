@@ -17,6 +17,7 @@ import { auth } from '@/components/Auth/Firebase'
 
 export default function Home() {
   const dispatch = useAppDispatch();
+  
     useEffect(()=> {
       dispatch(setLoading(true))
       onAuthStateChanged(auth, (user) => {
@@ -28,6 +29,7 @@ export default function Home() {
         }
       });
     },[dispatch])
+
 
   return (
     <div>

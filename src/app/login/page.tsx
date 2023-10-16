@@ -27,7 +27,7 @@ const page = () => {
       } = useForm<Inputs>()
 
       const onSubmit: SubmitHandler<Inputs> = async (data) => {
-        console.log(data)
+        // console.log(data)
         const {email, password} = data;
         await dispatch(loginUser({email, password}))
     }

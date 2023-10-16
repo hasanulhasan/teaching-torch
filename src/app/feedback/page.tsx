@@ -24,7 +24,7 @@ const FeedbackForm = () => {
   const {
     register,
     handleSubmit,
-    watch,
+    watch,reset,
     formState: { errors },
   } = useForm<Inputs>()
 
@@ -34,6 +34,7 @@ const FeedbackForm = () => {
     try {
       await postReview({userName, userEmail, rating, comment,});
       message.success('Your review posted')
+      reset()
     } catch (error) {
       console.log(error)
       message.error('There is an error')
@@ -41,7 +42,7 @@ const FeedbackForm = () => {
   }
 
   useEffect(() => {
-    if(user.email && !isLoading){
+    if(!user.email && !isLoading){
       router.push('/login')
     }
   }, [user.email, isLoading])
@@ -69,7 +70,7 @@ const FeedbackForm = () => {
                             Email
                         </label>
             <input {...register("email", { required: true })} className="block w-full px-4 py-3 mb-2 text-sm placeholder-gray-500 bg-white border rounded dark:text-gray-400 dark:placeholder-gray-500 dark:border-gray-800 dark:bg-gray-800"
-                            type="text" name="email" placeholder="Write your email"/>
+                            type="text" name="email" placeholder="Write your email" defaultValue={user?.email!}/>
             {errors.email && <span className='text-danger-700'>This field is required</span>}
                     </div>
                     <div className="mb-6">

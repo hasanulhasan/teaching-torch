@@ -4,10 +4,24 @@ import { Layout, Menu } from 'antd';
 import React, { useState } from 'react';
 const { Sider } = Layout;
 import { sidebarItems } from '@/constant/sidebarItems';
+import { useAppSelector } from "@/redux/hooks";
+import { useGetUsersQuery } from "@/redux/features/api";
 
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
-  // const {role} = getUserInfo() as any;
+  const {user, isLoading, isError} = useAppSelector(state=> state.user)
+  const {data, isLoading:dbUserLoading, isError: dbUserIsError} = useGetUsersQuery(null)
+  const allUsers = data?.data
+  let role:string
+
+  if (!isLoading && !isError && !dbUserLoading && !dbUserLoading && user?.email && allUsers?.length > 0){
+    allUsers.filter( dbUser => {
+      if(dbUser.email === user?.email && dbUser.role === 'admin'){
+        role = 'admin'
+      }else{
+        role = 'user'
+      }
+  })}
   
   return (
     <Sider
@@ -26,14 +40,15 @@ const Sidebar = () => {
         <div className="demo-logo-vertical" />
         <div style={{
           color: 'white',
-          fontSize: '2rem',
+          fontSize: '1.5rem',
           textAlign: 'center',
           fontWeight: 'bold',
-          marginBottom: '1rem'
+          marginBottom: '1rem',
+          marginTop: '1rem'
         }}>
           Dashboard
         </div>
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={sidebarItems()} />
+        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={sidebarItems(role)} />
     </Sider>
   );
 };

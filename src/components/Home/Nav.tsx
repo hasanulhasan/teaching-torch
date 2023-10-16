@@ -36,10 +36,6 @@ function AppHeader() {
             key: "/",
           },
           {
-            label: <Link href={`/login`}>Login</Link>,
-            key: "login",
-          },
-          {
             label: <Link href={`/feedback`}>Feedback</Link>,
             key: "feedback",
           },
@@ -67,12 +63,20 @@ function AppHeader() {
           }
         ]}
       />
-      <div className="flex">
-      <ShoppingCartOutlined style={{fontSize: '28px'}}/>
+      {
+        user?.email? <>
+        <div className="flex">
+      <Link href='/orders' className="cursor-pointer"><ShoppingCartOutlined style={{fontSize: '28px'}}/></Link>
       <Link href='/profile'><UserOutlined style={{fontSize: '28px', marginLeft: '10px',
       marginRight: '10px'
     }}/></Link>
       </div>
+        </> : <>
+        <div>
+      <Link className="flex" href='/login'><button className="inline-block m-2 px-4 py-2 outline outline-offset-1 outline-blue-500 text-black font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-600">Login</button></Link>
+      </div>
+        </>
+      }
     </div>
   );
 }
