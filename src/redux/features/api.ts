@@ -17,6 +17,21 @@ export const api = createApi({
       query: () => '/orders',
       providesTags: ['Orders']
     }),
+    createUserInDB: builder.mutation({
+      query: (data) => ({
+        url: '/users/create-user',
+        method: 'POST',
+        body: data
+      }),
+    }),
+    createOrder: builder.mutation({
+      query: (data) => ({
+        url: '/orders/create-order',
+        method: 'POST',
+        body: data
+      }),
+      invalidatesTags: ['Orders']
+    }),
     postReview: builder.mutation({
       query: (data) => ({
         url: '/feedbacks/create-feedback',
@@ -27,4 +42,4 @@ export const api = createApi({
   }),
 })
 
-export const {useGetProductsQuery, useGetProductQuery, useGetOrdersQuery, usePostReviewMutation} = api;
+export const {useGetProductsQuery, useGetProductQuery, useGetOrdersQuery, usePostReviewMutation, useCreateUserInDBMutation, useCreateOrderMutation} = api;

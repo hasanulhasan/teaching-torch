@@ -1,10 +1,9 @@
-import Courses from '@/components/Course/Courses';
+import AllCourses from '@/components/Course/AllCourses';
 
-import FooterPage from '@/components/Home/Footer'
 const CoursesPage = () => {
   return (
     <div>
-      <Courses/>
+      <AllCourses/>
     </div>
   );
 };

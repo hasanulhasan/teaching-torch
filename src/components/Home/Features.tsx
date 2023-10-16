@@ -26,7 +26,7 @@ const features = [
     },
     {
         id: 4,
-        title: 'Latest resource and Technological environment',
+        title: 'Latest resource and Technology',
         icon: Technology,
         description: 'Lorem ipsum dor amet is a dummy text.Lorem ipsum dor ametisopinus ipaino cumberisus'
     },
@@ -43,7 +43,6 @@ const features = [
         description: 'Lorem ipsum dor amet is a dummy text.Lorem ipsum dor ametisopinus ipaino cumberisus'
     },
 ]
-//icon -- xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
 const Features = () => {
   return (
     <section className="flex items-center bg-gray-100 lg:h-screen dark:bg-gray-800 font-poppins">
@@ -55,9 +54,9 @@ const Features = () => {
         <div className="flex flex-wrap justify-center -mx-4">
             {
                 features.map(feature => (
-                    <div key={feature.id} className="w-full px-4 mb-6 md:w-1/2 lg:w-1/3">
-                <div
-                    className="h-full p-6 text-left transition duration-200 rounded-md shadow dark:bg-gray-900 bg-gray-50 ">
+                <div key={feature.id} className="w-full px-4 mb-6 md:w-1/2 lg:w-1/3"> 
+                    <div
+                      className="h-full p-6 text-left transition duration-200 rounded-md shadow dark:bg-gray-900 bg-gray-50 ">
                     <div
                         className="inline-flex items-center justify-center w-16 h-16 mx-auto mb-6 text-blue-600 bg-blue-100 rounded-lg dark:bg-gray-700 dark:text-gray-400">
                         <Image src={feature.icon} alt='feature-photo'></Image>
@@ -70,7 +69,7 @@ const Features = () => {
                     </p>
                 </div>
             </div>
-                ))
+        ))
             }
 
         </div>

@@ -34,7 +34,7 @@ const page = () => {
 
     useEffect(() => {
       if(user.email && !isLoading){
-        router.push('/')
+        router.push('/profile')
         message.success('Login Successful')
       }
     }, [user.email, isLoading])

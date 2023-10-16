@@ -1,13 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
-import { useGetProductsQuery } from '@/redux/features/api';
+import { useCreateOrderMutation, useGetProductsQuery } from '@/redux/features/api';
 import React from 'react';
 import Loading from '../loading';
 import IProduct from '@/Types/Global';
 import RelatedProduct from '@/components/RelatedProduct/RelatedProduct';
 import { useRouter } from 'next/navigation';
 import { CommentOutlined } from '@ant-design/icons';
+import { useAppSelector } from '@/redux/hooks';
+import { message } from 'antd';
 
 const ProductDetails = ({course}) => {
+  const {user, isLoading:userIsLoading} = useAppSelector(state=> state.user)
+  const [createOrder] = useCreateOrderMutation()
+
   const {_id, title, price, seat, img, rating, description, category, reviews, status} = course;
   const router = useRouter();
   const {data, isLoading, isError} = useGetProductsQuery(undefined);
@@ -21,8 +26,15 @@ const ProductDetails = ({course}) => {
     .filter(course => { return course._id !== _id && course.category === category })
     .map(course => <RelatedProduct key={course._id} course={course} />)}
 
-  const handleOrder = () => {
-    router.push(`/orders`)
+  const handleOrder = async () => {
+    if(user?.email){
+      const userEmail = user?.email
+      await createOrder({...course, isPaid: false, userEmail}).then(()=> {
+        router.push(`/orders`)
+      })
+    }else{
+      message.error('You Have to log in first')
+    }
   }
   
   return (
@@ -42,12 +54,11 @@ const ProductDetails = ({course}) => {
            <p className='text-xl'>Seat Available: {seat}</p>
            <p className='text-xl'>Availability: {status? 'In Stock' : 'Out of Stock'}</p>
         </div>
-
-        
         <p className='text-xl'>{description}.....</p>
         </div>
         <button onClick={()=> handleOrder()}  className="inline-block mt-2 px-6 py-2.5 bg-blue-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-600">Add to cart</button>
        </div>
+
       <div className='my-8'>
       <h1 className='my-4 text-2xl'>Reviews:</h1>
       <div>

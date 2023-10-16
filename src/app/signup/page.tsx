@@ -3,6 +3,7 @@
 /* eslint-disable react/jsx-no-duplicate-props */
 'use client'
 import Nav from "@/components/Home/Nav";
+import { useCreateUserInDBMutation } from "@/redux/features/api";
 import { createUser } from "@/redux/features/userSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { message } from "antd";
@@ -18,6 +19,7 @@ type Inputs = {
 const page = () => {
     const dispatch = useAppDispatch();
     const {user, isLoading} = useAppSelector(state=> state.user)
+    const [createUserInDB] = useCreateUserInDBMutation();
     const router = useRouter();
 
     const {
@@ -30,12 +32,20 @@ const page = () => {
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         console.log(data)
         const {email, password} = data;
-        await dispatch(createUser({email, password}))
+        try {
+            await dispatch(createUser({email, password})).then(()=> {
+                const role = 'user'
+                createUserInDB({email, role})
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     useEffect(() => {
       if(user.email && !isLoading){
-        router.push('/')
+        
+        router.push('/profile')
         message.success('Registration Successful')
       }
     }, [user.email, isLoading])

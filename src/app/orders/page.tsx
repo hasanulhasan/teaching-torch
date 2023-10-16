@@ -5,8 +5,10 @@ import { useGetOrdersQuery } from '@/redux/features/api';
 import Nav from '@/components/Home/Nav'
 import Cart from '@/components/Cart/Cart';
 import Loading from '../loading';
+import { useAppSelector } from '@/redux/hooks';
 
 const page = () => {
+  const {user, isLoading:userIsLoading} = useAppSelector(state=> state.user)
   const {data, isLoading, isError} = useGetOrdersQuery(null);
   const orders = data?.data
   
@@ -14,7 +16,9 @@ const page = () => {
   if (isLoading) content = <Loading/>
   if (!isLoading && isError) content = <p className='text-lg text-destructive text-center'>There is an error</p>;
   if (!isLoading && !isError && orders?.length === 0) content = <p className='text-lg text-destructive'>There is no Order</p>;
-  if (!isLoading && !isError && orders?.length > 0) { content = orders.map(order => <Cart key={order._id} order={order} />)}
+  if (!isLoading && !isError && orders?.length > 0) { content = orders
+    .filter(order => order.userEmail === user?.email)
+    .map(order => <Cart key={order._id} order={order} />)}
 
   return (
     <div>
