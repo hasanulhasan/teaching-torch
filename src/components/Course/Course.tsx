@@ -5,6 +5,7 @@ import Image from 'next/image';
 import IProduct from '@/Types/Global';
 import ClassRoom from '../../assets/lecture.png'
 import PeopleIcon from '../../assets/user.png'
+import { Rate } from 'antd';
 
 const Course = ({course}: IProduct) => {
   const {_id, title, price, img, rating, seat, category, description, instructors} = course;
@@ -54,19 +55,25 @@ const Course = ({course}: IProduct) => {
                         </a>
                         <span className="text-sm text-gray-600 dark:text-gray-400">{instructors[0]}</span>
                     </div>
-                    <h2 className="mb-4 text-lg font-medium text-gray-700 dark:text-gray-400">
-                        {description}
+                    <h2 className="mb-3 text-lg font-medium text-gray-700 dark:text-gray-400">
+                        {description} ...
                     </h2>
+                    <div className='my-1'>
+                    <span>Rating <Rate allowHalf defaultValue={Number(rating)} /></span>
+                    </div>
                     <div className="flex items-center justify-between ">
                         <div className="flex items-center">
-                            <a href="" className="mr-2 text-blue-700 dark:text-gray-400">
-                                <Image src={ClassRoom} height={14} width={14} alt='class-seat'></Image>
-                                </a>
-                            <span className="text-sm font-medium text-gray-700 dark:text-gray-400">{seat}</span>
+                        <div>
+                            <span className='text-sm p-1 px-2 font-bold bg-blue-100 rounded text-gray-700 dark:text-gray-400'>Seat: {seat}</span>
+                        </div>
+                        </div>
+                        <div>
+                            <span className='text-sm p-1 px-2 font-bold bg-blue-100 rounded text-gray-700 dark:text-gray-400'>Price: {price}</span>
                         </div>
                         <button onClick={()=> handleRoute()}
                             className="px-3 py-2 text-xs text-gray-100 bg-blue-700 rounded hover:bg-blue-600 hover:text-gray-100">
-                            View Details</button>
+                            View Details
+                        </button>
                     </div>
           </div>
     </div>

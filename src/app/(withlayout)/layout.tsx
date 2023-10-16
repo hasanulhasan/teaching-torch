@@ -8,10 +8,13 @@ import Contents from '@/components/ui/Contents';
 const DashboardLayout = ({children}: {children: React.ReactNode}) => {
 
   return (
+    <>
+    <Nav/>
     <Layout hasSider>
       <Sidebar/>
        <Contents>{children}</Contents>
     </Layout>
+    </>
   );
 };
 

@@ -5,24 +5,19 @@ import Link from "next/link";
 export const sidebarItems = () => {
   const defaultSidebarItems: MenuProps["items"] = [
     {
-      label: "Profile",
+      label: <Link href={`/profile`}>Profile</Link>,
       key: "profile",
-      icon: <ProfileOutlined />,
-      children: [
-        {
-          label: <Link href={`/profile`}>Account Profile</Link>,
-          key: `/profile`,
-        },
-        {
-          label: <Link href={`/change-password`}>Change Password</Link>,
-          key: `/change-password`,
-        },
-      ]
+      icon: <ProfileOutlined />
     },
     {
-      label: <Link href={`/manage-order`}>Manage Orders</Link>,
+      label: <Link href={`/profile/manage-orders`}>Manage Orders</Link>,
       icon: <TableOutlined />,
       key: `/manage-order`,
+    },
+    {
+      label: <Link href={`/profile/manage-feedback`}>Manage Feedback</Link>,
+      icon: <TableOutlined />,
+      key: `/manage-feedback`,
     },
   ];
   return defaultSidebarItems;

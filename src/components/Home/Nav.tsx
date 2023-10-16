@@ -1,7 +1,7 @@
 'use client'
 import { setUser } from "@/redux/features/userSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { HomeFilled } from "@ant-design/icons";
+import { HomeFilled, ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
 import {  Menu, message } from "antd";
 import { signOut } from "firebase/auth";
 import Link from "next/link";
@@ -24,14 +24,15 @@ function AppHeader() {
   };
 
   return (
-    <div>
+    <div className="flex justify-between h-16 items-center shadow-lg lg:px-10">
       <Menu
-        className="appMenu"
+        style={{border: 'none'}}
+        className="w-full"
         onClick={onMenuClick}
         mode="horizontal"
         items={[
           {
-            label: <Link href={`/`}><HomeFilled /> Teaching Torch</Link>,
+            label: <Link className="text-lg font-bold" href={`/`}>Teaching Torch</Link>,
             key: "/",
           },
           {
@@ -66,6 +67,12 @@ function AppHeader() {
           }
         ]}
       />
+      <div className="flex">
+      <ShoppingCartOutlined style={{fontSize: '28px'}}/>
+      <Link href='/profile'><UserOutlined style={{fontSize: '28px', marginLeft: '10px',
+      marginRight: '10px'
+    }}/></Link>
+      </div>
     </div>
   );
 }
