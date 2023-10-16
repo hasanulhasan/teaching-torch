@@ -1,10 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import { useAppSelector } from '@/redux/hooks';
 import React from 'react';
 
 const Reviews = () => {
-    const {user, isLoading} = useAppSelector(state=> state.user)
-    console.log(user)
   return (
     <div>
          <section className="flex items-center bg-white lg:h-screen dark:bg-gray-800">

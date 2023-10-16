@@ -1,8 +1,9 @@
 'use client'
+
 import Course from "./Course";
 import { useGetProductsQuery } from "@/redux/features/api";
 import Loading from "@/app/loading";
-import IProduct from "@/Types/Global";
+import IProduct from "@/Types";
 
 const Courses = () => {
   const {data, isLoading, isError} = useGetProductsQuery(undefined);

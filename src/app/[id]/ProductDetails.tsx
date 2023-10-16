@@ -2,14 +2,14 @@
 import { useCreateOrderMutation, useGetProductsQuery } from '@/redux/features/api';
 import React from 'react';
 import Loading from '../loading';
-import IProduct from '@/Types/Global';
+import IProduct from '@/Types';
 import RelatedProduct from '@/components/RelatedProduct/RelatedProduct';
 import { useRouter } from 'next/navigation';
 import { CommentOutlined } from '@ant-design/icons';
 import { useAppSelector } from '@/redux/hooks';
 import { message } from 'antd';
 
-const ProductDetails = ({course}) => {
+const ProductDetails = ({course}: {  course: IProduct  }) => {
   const {user, isLoading:userIsLoading} = useAppSelector(state=> state.user)
   const [createOrder] = useCreateOrderMutation()
 
@@ -64,8 +64,8 @@ const ProductDetails = ({course}) => {
       <div>
         {
           reviews.map(
-            review => (
-            <div key={review.i}>
+            (review,i) => (
+            <div key={i}>
              
              <h1 className='text-xl'> <CommentOutlined/> {review}</h1>
             </div>

@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import edcationImg from './../../assets/education.png'
 const About = () => {
   return (
     <div>

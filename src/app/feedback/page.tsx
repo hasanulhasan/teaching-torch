@@ -2,37 +2,38 @@
 'use client'
 import Nav from '@/components/Home/Nav';
 import { usePostReviewMutation } from '@/redux/features/api';
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { useAppSelector } from '@/redux/hooks';
 import { message } from 'antd';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useForm, SubmitHandler } from "react-hook-form"
 
 type Inputs = {
-  name: string
+  userName: string
   email: string
   rating: string
   comment: string
 }
 
 const FeedbackForm = () => {
- const dispatch = useAppDispatch();
  const {user, isLoading} = useAppSelector(state => state.user)
  const router = useRouter();
-  const [postReview] = usePostReviewMutation();
+const [postReview] = usePostReviewMutation();
 
   const {
     register,
     handleSubmit,
-    watch,reset,
+    reset,
     formState: { errors },
   } = useForm<Inputs>()
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const {name: userName, rating, comment, email:userEmail} = data
+    const {userName, rating, comment, email:userEmail} = data
+
     console.log(userName, rating, comment, userEmail)
+    
     try {
-      await postReview({userName, userEmail, rating, comment,});
+      await postReview({userName, userEmail, rating, comment});
       message.success('Your review posted')
       reset()
     } catch (error) {
@@ -61,9 +62,9 @@ const FeedbackForm = () => {
                         <label className="block mb-2 text-sm font-medium dark:text-gray-400" htmlFor="">
                             Full Name
                         </label>
-            <input {...register("name", { required: true })} className="block w-full px-4 py-3 mb-2 text-sm placeholder-gray-500 bg-white border rounded dark:text-gray-400 dark:placeholder-gray-500 dark:border-gray-800 dark:bg-gray-800"
-                            type="text" name="name" placeholder="Write a full name"/>
-            {errors.name && <span className='text-danger-700'>This field is required</span>}
+            <input {...register("userName", { required: true })} className="block w-full px-4 py-3 mb-2 text-sm placeholder-gray-500 bg-white border rounded dark:text-gray-400 dark:placeholder-gray-500 dark:border-gray-800 dark:bg-gray-800"
+                            type="text" name="userName" placeholder="Write a full name"/>
+            {errors.userName && <span className='text-danger-700'>This field is required</span>}
                     </div>
                     <div className="mb-6">
                         <label className="block mb-2 text-sm font-medium dark:text-gray-400" htmlFor="">

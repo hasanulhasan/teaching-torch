@@ -6,7 +6,6 @@ import Faqs from '@/components/Home/Features'
 import FooterPage from '@/components/Home/Footer'
 import Nav from '@/components/Home/Nav'
 import Newsletter from '@/components/Home/Newsletter'
-import PopularCategory from '@/components/Home/PopularCategory'
 import Reviews from '@/components/Home/Reviews'
 import Counters from '@/components/Home/Counters'
 import { useAppDispatch } from '@/redux/hooks'
@@ -17,7 +16,6 @@ import { auth } from '@/components/Auth/Firebase'
 
 export default function Home() {
   const dispatch = useAppDispatch();
-  
     useEffect(()=> {
       dispatch(setLoading(true))
       onAuthStateChanged(auth, (user) => {
@@ -30,12 +28,10 @@ export default function Home() {
       });
     },[dispatch])
 
-
   return (
     <div>
       <Nav/>
       <Banner/>
-      {/* <PopularCategory/> */}
       <Courses/>
       <About/>
       <Reviews/>

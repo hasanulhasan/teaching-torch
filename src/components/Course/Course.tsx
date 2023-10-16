@@ -2,12 +2,11 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import IProduct from '@/Types/Global';
-import ClassRoom from '../../assets/lecture.png'
+import IProduct from '@/Types';
 import PeopleIcon from '../../assets/user.png'
 import { Rate } from 'antd';
 
-const Course = ({course}: IProduct) => {
+const Course = ({course}: {  course: IProduct  }) => {
   const {_id, title, price, img, rating, seat, category, description, instructors} = course;
 
   const router = useRouter();

@@ -1,16 +1,14 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
-interface Ifilter {
+interface filter {
   sort: string,
   search: string,
-  date: string,
   price: string
 }
 
-const initialState: Ifilter = {
+const initialState: filter = {
   sort: '',
   search: '',
-  date: '',
   price: ''
 }
 

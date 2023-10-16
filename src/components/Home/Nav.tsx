@@ -1,26 +1,14 @@
 'use client'
-import { setUser } from "@/redux/features/userSlice";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { HomeFilled, ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
-import {  Menu, message } from "antd";
-import { signOut } from "firebase/auth";
+
+import { useAppSelector } from "@/redux/hooks";
+import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
+import { Menu } from "antd";
 import Link from "next/link";
-import { auth } from "../Auth/Firebase";
 
 function AppHeader() {
- 
   const {user} = useAppSelector(state => state.user)
-  const dispatch = useAppDispatch();
-
-  const handleLogout = async ()=> {
-    await signOut(auth).then(() => {
-      dispatch(setUser(null))
-      message.success('Logout Success')
-    })
-  }
 
   const onMenuClick = () => {
-    // navigate(`/${item.key}`);
   };
 
   return (
@@ -42,10 +30,6 @@ function AppHeader() {
           {
             label: <Link href={`/courses`}>Courses</Link>,
             key: "courses",
-          },
-          {
-            label: <button onClick={()=> handleLogout()}>Logout</button>,
-            key: "Logout",
           },
           {
             label: "Category",

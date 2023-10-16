@@ -71,7 +71,6 @@ const Features = () => {
             </div>
         ))
             }
-
         </div>
     </div>
 </section>

@@ -1,12 +1,10 @@
 'use client'
 import Loading from '@/app/loading';
 import { useDeleteOrderMutation, useGetOrdersQuery } from '@/redux/features/api';
-import { useAppSelector } from '@/redux/hooks';
 import { message } from 'antd';
 import IOrder from '@/Types';
 
 const ManageOrders = () => {
-  const {user, isLoading:userIsLoading} = useAppSelector(state=> state.user)
   const [deleteOrder] = useDeleteOrderMutation();
   const {data, isLoading, isError} = useGetOrdersQuery(null);
   const orders:IOrder[] = data?.data
@@ -23,13 +21,13 @@ const ManageOrders = () => {
   }
 
   let content = null;
-  if (isLoading && userIsLoading) content = <Loading/>
+  if (isLoading) content = <Loading/>
   if (!isLoading && isError) content = <p className='text-lg text-destructive text-center'>There is an error</p>;
   if (!isLoading && !isError && orders?.length === 0) content = <p className='text-lg text-destructive'>There is no Order</p>;
-  if (!isLoading && !userIsLoading && user?.email && !isError && orders?.length > 0) { content = orders.
-    filter(order => order.userEmail === user?.email)
-  .map(order => <tr key={order._id} className="text-xs bg-gray-100 dark:text-gray-400 dark:bg-gray-800">
+  if (!isLoading && !isError && orders?.length > 0) { content = orders
+    .map(order => <tr key={order._id} className="text-xs bg-gray-100 dark:text-gray-400 dark:bg-gray-800">
     <td className="px-6 py-5 font-medium">{order.title}</td>
+    <td className="px-6 py-5 font-medium">{order.userEmail}</td>
     <td className="px-6 py-5 font-medium ">{order.price}</td>
     <td className="px-6 py-5 font-medium ">{order.category}</td>
     <td className="px-6 py-5 font-medium ">{order.status} 
@@ -58,13 +56,14 @@ const ManageOrders = () => {
         <div className="justify-center flex-1 max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
             <div className="pt-4 bg-white rounded shadow dark:bg-gray-900">
                 <div className="flex px-6 pb-4 border-b dark:border-gray-700">
-                    <h2 className="text-xl font-bold dark:text-gray-400">My Orders</h2>
+                    <h2 className="text-xl font-bold dark:text-gray-400">Customers Orders</h2>
                 </div>
                 <div className="p-4 overflow-x-auto">
                     <table className="w-full table-auto">
                         <thead>
                             <tr className="text-xs text-left text-gray-500 dark:text-gray-400">
                                 <th className="px-6 pb-3 font-medium">Course Name</th>
+                                <th className="px-6 pb-3 font-medium">Email</th>
                                 <th className="px-6 pb-3 font-medium ">Price </th>
                                 <th className="px-6 pb-3 font-medium">Course Category</th>
                                 <th className="px-6 pb-3 font-medium">Available Status</th>

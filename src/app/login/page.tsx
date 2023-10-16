@@ -16,18 +16,16 @@ type Inputs = {
 }
 
 const page = () => {
-    const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   const {user, isLoading} = useAppSelector(state => state.user)
   const router = useRouter();
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors },
       } = useForm<Inputs>()
 
-      const onSubmit: SubmitHandler<Inputs> = async (data) => {
-        // console.log(data)
+    const onSubmit: SubmitHandler<Inputs> = async (data) => {
         const {email, password} = data;
         await dispatch(loginUser({email, password}))
     }

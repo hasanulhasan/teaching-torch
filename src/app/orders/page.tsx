@@ -6,11 +6,12 @@ import Nav from '@/components/Home/Nav'
 import Cart from '@/components/Cart/Cart';
 import Loading from '../loading';
 import { useAppSelector } from '@/redux/hooks';
+import IOrder from '@/Types';
 
 const page = () => {
   const {user, isLoading:userIsLoading} = useAppSelector(state=> state.user)
   const {data, isLoading, isError} = useGetOrdersQuery(null);
-  const orders = data?.data
+  const orders: IOrder[] = data?.data
   
   let content = null;
   if (isLoading) content = <Loading/>

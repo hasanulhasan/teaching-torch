@@ -6,20 +6,20 @@ const { Sider } = Layout;
 import { sidebarItems } from '@/constant/sidebarItems';
 import { useAppSelector } from "@/redux/hooks";
 import { useGetUsersQuery } from "@/redux/features/api";
+import IUser from '@/Types';
 
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
   const {user, isLoading, isError} = useAppSelector(state=> state.user)
   const {data, isLoading:dbUserLoading, isError: dbUserIsError} = useGetUsersQuery(null)
-  const allUsers = data?.data
+  const allUsers:IUser[] = data?.data
   let role:string
 
-  if (!isLoading && !isError && !dbUserLoading && !dbUserLoading && user?.email && allUsers?.length > 0){
-    allUsers.filter( dbUser => {
+  if (!isLoading && !isError && !dbUserLoading && !dbUserLoading && !dbUserIsError  && user?.email && allUsers?.length > 0){
+    allUsers.find( dbUser => {
+
       if(dbUser.email === user?.email && dbUser.role === 'admin'){
         role = 'admin'
-      }else{
-        role = 'user'
       }
   })}
   
@@ -48,7 +48,7 @@ const Sidebar = () => {
         }}>
           Dashboard
         </div>
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={sidebarItems(role)} />
+        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={sidebarItems(role!)} />
     </Sider>
   );
 };
