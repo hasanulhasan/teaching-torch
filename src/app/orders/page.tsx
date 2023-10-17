@@ -12,13 +12,19 @@ const page = () => {
   const {user, isLoading:userIsLoading} = useAppSelector(state=> state.user)
   const {data, isLoading, isError} = useGetOrdersQuery(null);
   const orders: IOrder[] = data?.data
+  let totalPrice: number = 0;
   
   let content = null;
   if (isLoading) content = <Loading/>
   if (!isLoading && isError) content = <p className='text-lg text-destructive text-center'>There is an error</p>;
   if (!isLoading && !isError && orders?.length === 0) content = <p className='text-lg text-destructive'>There is no Order</p>;
-  if (!isLoading && !isError && orders?.length > 0) { content = orders
-    .filter(order => order.userEmail === user?.email)
+  if (!isLoading && !userIsLoading && !isError && orders?.length > 0) { content = orders
+    .filter(order => {
+        if(order.userEmail === user?.email){
+            totalPrice = totalPrice + Number(order.price)
+        }
+        return order.userEmail === user?.email
+    })
     .map(order => <Cart key={order._id} order={order} />)}
 
   return (
@@ -46,15 +52,15 @@ const page = () => {
                         <div
                             className="flex items-center justify-between pb-4 mb-4 border-b border-gray-300 dark:border-gray-700 ">
                             <span className="text-gray-700 dark:text-gray-400">Subtotal</span>
-                            <span className="text-xl font-bold text-gray-700 dark:text-gray-400 ">$99.00</span>
+                            <span className="text-xl font-bold text-gray-700 dark:text-gray-400 ">{totalPrice}</span>
                         </div>
                         <div className="flex items-center justify-between pb-4 mb-4 ">
                             <span className="text-gray-700 dark:text-gray-400 ">Shipping</span>
-                            <span className="text-xl font-bold text-gray-700 dark:text-gray-400 ">Free</span>
+                            <span className="text-xl font-bold text-gray-700 dark:text-gray-400 ">50</span>
                         </div>
                         <div className="flex items-center justify-between pb-4 mb-4 ">
                             <span className="text-gray-700 dark:text-gray-400">Order Total</span>
-                            <span className="text-xl font-bold text-gray-700 dark:text-gray-400">$99.00</span>
+                            <span className="text-xl font-bold text-gray-700 dark:text-gray-400">{totalPrice + 50}</span>
                         </div>
                         <h2 className="text-lg text-gray-500 dark:text-gray-400">We offer:</h2>
                         <div className="flex items-center gap-2 mb-4 ">

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 import Loading from "@/app/loading";
 import { auth } from "@/components/Auth/Firebase";
@@ -20,6 +21,7 @@ const UserProfile = () => {
   if (!isLoading && !isError && user?.email && allUsers?.length > 0)
     content = allUsers.filter(dbUser => {
   return dbUser.email === user?.email}).map(dbUser => <div key={dbUser._id}>
+      <img src={`https://ui-avatars.com/api/?name=${dbUser?.name}&size=128&bold=true`} alt="image of user" className="rounded-lg mb-2"></img>
       <h1 className="text-2xl font-bold">{dbUser?.name}</h1>
       <h1 className="text-2xl font-bold">Email: {dbUser?.email}</h1>
       <h1 className="text-2xl font-bold">Role: {dbUser?.role}</h1>

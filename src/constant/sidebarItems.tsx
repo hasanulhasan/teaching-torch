@@ -2,7 +2,7 @@
 'use client'
 
 import { Button, MenuProps, message } from "antd";
-import {LogoutOutlined, ProfileOutlined, TableOutlined} from "@ant-design/icons"
+import {CommentOutlined, LogoutOutlined, TableOutlined, UserOutlined, UserSwitchOutlined} from "@ant-design/icons"
 import Link from "next/link";
 import { useAppDispatch } from "@/redux/hooks";
 import { signOut } from "firebase/auth";
@@ -27,7 +27,7 @@ export const sidebarItems = (role: string) => {
     {
       label: <Link href={`/profile`}>Profile</Link>,
       key: "profile",
-      icon: <ProfileOutlined />
+      icon: <UserOutlined />
     },
     {
       label: <Link href={`/profile/manage-orders`}>Manage Orders</Link>,
@@ -36,7 +36,7 @@ export const sidebarItems = (role: string) => {
     },
     {
       label: <Link href={`/profile/manage-feedback`}>Manage Feedback</Link>,
-      icon: <TableOutlined />,
+      icon: <CommentOutlined />,
       key: `/manage-feedback`,
     },
     {
@@ -49,7 +49,7 @@ export const sidebarItems = (role: string) => {
     {
       label: <Link href={`/profile`}>Profile</Link>,
       key: "profile",
-      icon: <ProfileOutlined />
+      icon: <UserOutlined />
     },
     {
       label: <Link href={`/admin/manage-orders`}>Customer Orders</Link>,
@@ -58,16 +58,16 @@ export const sidebarItems = (role: string) => {
     },
     {
       label: <Link href={`/admin/manage-feedback`}>User Feedbacks</Link>,
-      icon: <TableOutlined />,
+      icon: <CommentOutlined />,
       key: `/manage-feedback`,
     },
     {
       label: <Link href={`/admin/manage-users`}>Manage User</Link>,
-      icon: <TableOutlined />,
+      icon: <UserSwitchOutlined />,
       key: `/manage-users`,
     },
     {
-      label: <Button onClick={()=> handleLogout()} style={{color: 'red'}}>Logout</Button>,
+      label: <p onClick={()=> handleLogout()} style={{color: 'red'}}>Logout</p>,
       icon: <LogoutOutlined style={{color: 'red'}} />,
       key: `/logout`,
     },

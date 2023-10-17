@@ -1,12 +1,12 @@
 "use client"
-
 import { Layout, Menu } from 'antd';
 import React, { useState } from 'react';
 const { Sider } = Layout;
 import { sidebarItems } from '@/constant/sidebarItems';
 import { useAppSelector } from "@/redux/hooks";
-import { useGetUsersQuery } from "@/redux/features/api";
 import IUser from '@/Types';
+import { useGetUsersQuery } from '@/redux/features/userApi';
+import { DashboardOutlined } from '@ant-design/icons';
 
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -46,7 +46,9 @@ const Sidebar = () => {
           marginBottom: '1rem',
           marginTop: '1rem'
         }}>
-          Dashboard
+          {
+            collapsed? <><DashboardOutlined style={{fontWeight: 'bold'}} /></> : <>Dashboard</>
+          }
         </div>
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={sidebarItems(role!)} />
     </Sider>
