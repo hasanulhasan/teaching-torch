@@ -36,28 +36,41 @@ function AppHeader() {
             key: "category",
             children: [
               {
-                label: "Python Learning",
-                key: "python learning",
+                label: "Programming",
+                key: "Programming",
               },
               {
-                label: "Javascript Learning",
-                key: "Javascript learning",
+                label: "Graphics",
+                key: "Graphics",
+              },
+              {
+                label: "Marketing",
+                key: "Marketing",
+              },
+              {
+                label: "Video",
+                key: "Video",
               }
             ],
-          }
+          },
+          {
+            label: <input placeholder='Search Course' className="flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"/>,
+            key: "search",
+          },
         ]}
       />
+      
       {
         user?.email? <>
         <div className="flex">
       <Link href='/orders' className="cursor-pointer"><ShoppingCartOutlined style={{fontSize: '28px'}}/></Link>
-      <Link href='/profile'><UserOutlined style={{fontSize: '28px', marginLeft: '10px',
-      marginRight: '10px'
+      <Link href='/profile'><UserOutlined style={{fontSize: '28px', paddingLeft: '10px',
+      paddingRight: '10px'
     }}/></Link>
       </div>
         </> : <>
         <div>
-      <Link className="flex" href='/login'><button className="inline-block m-2 px-4 py-2 outline outline-offset-1 outline-blue-500 text-black font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-600">Login</button></Link>
+      <Link className="flex" href='/login'><button className="inline-block m-2 px-4 py-2 outline outline-offset-1 outline-blue-500 text-black font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-600 hover:text-white">Login</button></Link>
       </div>
         </>
       }

@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { useCreateOrderMutation, useGetProductsQuery } from '@/redux/features/api';
 import React from 'react';
 import Loading from '../loading';
 import IProduct from '@/Types';
@@ -7,13 +6,15 @@ import RelatedProduct from '@/components/RelatedProduct/RelatedProduct';
 import { useRouter } from 'next/navigation';
 import { CommentOutlined } from '@ant-design/icons';
 import { useAppSelector } from '@/redux/hooks';
-import { message } from 'antd';
+import { Rate, message } from 'antd';
+import { useCreateOrderMutation } from '@/redux/features/orderApi';
+import { useGetProductsQuery } from '@/redux/features/productApi';
 
 const ProductDetails = ({course}: {  course: IProduct  }) => {
   const {user, isLoading:userIsLoading} = useAppSelector(state=> state.user)
   const [createOrder] = useCreateOrderMutation()
 
-  const {_id, title, price, seat, img, rating, description, category, reviews, status} = course;
+  const {_id, title, price, seat, img, rating, description, category, reviews, status, instructors, features} = course;
   const router = useRouter();
   const {data, isLoading, isError} = useGetProductsQuery(undefined);
   const courses:IProduct[] = data?.data
@@ -29,7 +30,8 @@ const ProductDetails = ({course}: {  course: IProduct  }) => {
   const handleOrder = async () => {
     if(user?.email){
       const userEmail = user?.email
-      await createOrder({...course, isPaid: false, userEmail}).then(()=> {
+      await createOrder({ title, instructors, img, price, category, seat, rating, status, description, features, reviews, isPaid: false, userEmail}).then(()=> {
+        message.success('Order Successfully Created')
         router.push(`/orders`)
       })
     }else{
@@ -52,6 +54,7 @@ const ProductDetails = ({course}: {  course: IProduct  }) => {
         <div>
            <p className='text-xl'>Category : {category}</p>
            <p className='text-xl'>Seat Available: {seat}</p>
+           <span className='text-xl'>Rating <Rate allowHalf defaultValue={Number(rating)} /></span>
            <p className='text-xl'>Availability: {status? 'In Stock' : 'Out of Stock'}</p>
         </div>
         <p className='text-xl'>{description}.....</p>
@@ -72,6 +75,9 @@ const ProductDetails = ({course}: {  course: IProduct  }) => {
             )
           )
         }
+        <h1 className='my-4 text-2xl'>Leave a Review</h1>
+          <textarea className="block w-1/2 px-4 py-3 mb-2 text-sm placeholder-gray-500 bg-white border rounded dark:text-gray-400 dark:border-gray-900 dark:bg-gray-800" name="comment" placeholder="Write your review..."></textarea>
+          <button className="inline-block mt-2 px-6 py-2.5 bg-blue-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-600">Submit</button>
       </div>
    </div>
       </div>

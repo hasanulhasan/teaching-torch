@@ -1,4 +1,5 @@
 'use client'
+
 import { BookOutlined,SafetyCertificateOutlined, MacCommandOutlined, ReadOutlined} from '@ant-design/icons';
 import React, { useState } from 'react';
 import CountUp from 'react-countup';
@@ -12,6 +13,7 @@ const Counters = () => {
             Our Reachment
         </h2>
         <div className="w-20 mx-auto mb-8 border-b border-red-700 dark:border-gray-400"></div>
+        {/* @ts-ignore */}
             <ScrollTrigger onEnter={()=> setCounterOn(true)} onExit={()=>setCounterOn(false)}>
                 <div className='flex flex-col lg:flex-row items-center justify-around my-8 text-center'>
                     <div className='border-2 border-gray-200 py-5 px-16 rounded-lg'>

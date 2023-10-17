@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 import Nav from '@/components/Home/Nav';
-import { usePostReviewMutation } from '@/redux/features/api';
+import { usePostReviewMutation } from '@/redux/features/feedbackApi';
 import { useAppSelector } from '@/redux/hooks';
 import { message } from 'antd';
 import { useRouter } from 'next/navigation';
@@ -18,24 +18,16 @@ type Inputs = {
 const FeedbackForm = () => {
  const {user, isLoading} = useAppSelector(state => state.user)
  const router = useRouter();
-const [postReview] = usePostReviewMutation();
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<Inputs>()
+ const [postReview] = usePostReviewMutation();
+ const { register, handleSubmit, reset, formState: { errors }} = useForm<Inputs>()
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const {userName, rating, comment, email:userEmail} = data
-
-    console.log(userName, rating, comment, userEmail)
-    
     try {
-      await postReview({userName, userEmail, rating, comment});
-      message.success('Your review posted')
-      reset()
+      await postReview({userName, userEmail, rating, comment}).then(()=> {
+        message.success('Your review posted')
+        reset()
+      })
     } catch (error) {
       console.log(error)
       message.error('There is an error')

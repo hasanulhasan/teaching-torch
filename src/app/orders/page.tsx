@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
 'use client'
-import { useGetOrdersQuery } from '@/redux/features/api';
 import Nav from '@/components/Home/Nav'
 import Cart from '@/components/Cart/Cart';
 import Loading from '../loading';
 import { useAppSelector } from '@/redux/hooks';
 import IOrder from '@/Types';
+import { useGetOrdersQuery } from '@/redux/features/orderApi';
 
 const page = () => {
   const {user, isLoading:userIsLoading} = useAppSelector(state=> state.user)

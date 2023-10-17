@@ -13,7 +13,6 @@ const FooterPage = () => {
 <div className="w-16 mb-4 border-b-2 border-blue-600 dark:border-gray-600"></div>
 <p className="text-base font-normal leading-6 lg:w-64 dark:text-gray-400">
 Lorem ipsum dor amet Lorem ipsum dor amet Lorem ipsum dor amet Lorem ipsum dor ame </p>
-<p><ScrollToTop /></p>
 </div>
 <div className="w-full px-4 md:w-1/4 lg:w-2/12 mb-7 lg:mb-0">
 <h2 className="pb-2 text-lg font-bold text-gray-800 dark:text-gray-400 ">Quick Links</h2>
@@ -103,6 +102,7 @@ About Us</a>
 </div>
 </div>
 </div>
+<ScrollToTop />
 </section>
   );
 };

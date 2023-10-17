@@ -1,10 +1,10 @@
 'use client'
 import Course from "./Course";
-import { useGetProductsQuery } from "@/redux/features/api";
 import Loading from "@/app/loading";
 import IProduct from "@/Types";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { priceSort, searchParam, sortType } from "@/redux/features/filterSlice";
+import { useGetProductsQuery } from "@/redux/features/productApi";
 
 const AllCourses = () => {
   const {data, isLoading, isError} = useGetProductsQuery(undefined);

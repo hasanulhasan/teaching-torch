@@ -1,9 +1,8 @@
 'use client'
-
 import Loading from "@/app/loading";
-import { useDeleteUserMutation, useGetUsersQuery } from "@/redux/features/api";
 import { message } from "antd";
 import IUser from '@/Types';
+import { useDeleteUserMutation, useGetUsersQuery } from "@/redux/features/userApi";
 
 const ManageUsers = () => {
   const {data, isLoading, isError} = useGetUsersQuery(null);

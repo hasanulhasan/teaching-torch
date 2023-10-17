@@ -1,12 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
-
 import { useParams } from 'next/navigation';
-import { useGetProductQuery } from '@/redux/features/api';
 import Loading from '../loading';
 import ProductDetails from './ProductDetails';
+import { useGetProductQuery } from '@/redux/features/productApi';
 
-const DetailPage = () => {
+const ProductDetailsPage = () => {
   const id:any = useParams();
   const {data, isLoading, isError} = useGetProductQuery(id?.id)
   const course = data?.data
@@ -28,4 +27,4 @@ const DetailPage = () => {
   );
 };
 
-export default DetailPage;
+export default ProductDetailsPage;

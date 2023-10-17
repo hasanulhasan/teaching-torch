@@ -1,13 +1,12 @@
 'use client'
-
 import Loading from "@/app/loading";
 import { auth } from "@/components/Auth/Firebase";
-import { useGetUsersQuery } from "@/redux/features/api";
 import { setLoading, setUser } from "@/redux/features/userSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import IUser from '@/Types';
+import { useGetUsersQuery } from "@/redux/features/userApi";
 
 const UserProfile = () => {
   const {user, isLoading, isError} = useAppSelector(state=> state.user)

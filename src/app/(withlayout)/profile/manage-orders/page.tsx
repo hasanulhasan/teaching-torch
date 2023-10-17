@@ -1,9 +1,9 @@
 'use client'
 import Loading from '@/app/loading';
-import { useDeleteOrderMutation, useGetOrdersQuery } from '@/redux/features/api';
 import { useAppSelector } from '@/redux/hooks';
 import { message } from 'antd';
 import IOrder from '@/Types';
+import { useDeleteOrderMutation, useGetOrdersQuery } from '@/redux/features/orderApi';
 
 const ManageOrders = () => {
   const {user, isLoading:userIsLoading} = useAppSelector(state=> state.user)

@@ -1,8 +1,8 @@
 'use client'
 import Loading from "@/app/loading";
-import { useDeleteReviewMutation, useGetReviewQuery } from "@/redux/features/api";
 import { message } from "antd";
 import IFeedback from '@/Types';
+import { useDeleteReviewMutation, useGetReviewQuery } from "@/redux/features/feedbackApi";
 
 const FeedbackPage = () => {
   const [deleteReview] = useDeleteReviewMutation();

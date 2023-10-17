@@ -3,7 +3,7 @@
 /* eslint-disable react/jsx-no-duplicate-props */
 'use client'
 import Nav from "@/components/Home/Nav";
-import { useCreateUserInDBMutation } from "@/redux/features/api";
+import { useCreateUserInDBMutation } from "@/redux/features/userApi";
 import { createUser } from "@/redux/features/userSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { message } from "antd";

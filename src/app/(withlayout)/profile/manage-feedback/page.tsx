@@ -1,9 +1,9 @@
 'use client'
 import Loading from "@/app/loading";
-import { useDeleteReviewMutation, useGetReviewQuery } from "@/redux/features/api";
 import { useAppSelector } from "@/redux/hooks";
 import { message } from "antd";
 import IFeedback from '@/Types';
+import { useDeleteReviewMutation, useGetReviewQuery } from "@/redux/features/feedbackApi";
 
 const FeedbackPage = () => {
   const {user, isLoading:userIsLoading} = useAppSelector(state=> state.user)
