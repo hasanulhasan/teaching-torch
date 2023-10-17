@@ -40,7 +40,7 @@ export const sidebarItems = (role: string) => {
       key: `/manage-feedback`,
     },
     {
-      label: <Button onClick={()=> handleLogout()} style={{color: 'red'}}>Logout</Button>,
+      label: <p onClick={()=> handleLogout()} style={{color: 'red'}}>Logout</p>,
       icon: <LogoutOutlined style={{color: 'red'}} />,
       key: `/logout`,
     }

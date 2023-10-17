@@ -33,7 +33,12 @@ const FeedbackPage = () => {
     <td className="px-6 py-5 font-medium ">{feedback.rating}</td>
     <td className="px-6 py-5 ">
         <button onClick={()=> handleFeedback(feedback._id!)}
-            className="px-4 py-2 font-medium text-blue-500 border border-blue-500 rounded-md dark:text-blue-300 dark:border-blue-300 dark:hover:bg-blue-300 dark:hover:text-gray-700 hover:text-danger-100 hover:bg-danger-500">Delete
+            className="px-4 py-2 font-medium text-gray-700 border border-danger-500 rounded-md dark:text-blue-300 dark:border-blue-300 dark:hover:bg-blue-300 dark:hover:text-gray-700 hover:text-danger-100 hover:bg-danger-500">Delete
+        </button>
+    </td>
+    <td className="px-6 py-5 ">
+        <button onClick={()=> handleFeedback(feedback._id!)}
+            className="px-4 py-2 font-medium text-gray-700 border border-blue-500 rounded-md dark:text-blue-300 dark:border-blue-300 dark:hover:bg-blue-300 dark:hover:text-gray-700 hover:text-danger-100 hover:bg-green-500">Edit
         </button>
     </td>
 </tr>)}
@@ -52,7 +57,8 @@ const FeedbackPage = () => {
                             <tr className="text-xs text-left text-gray-500 dark:text-gray-400">
                                 <th className="px-6 pb-3 font-medium">My Review</th>
                                 <th className="px-6 pb-3 font-medium ">My Rating</th>
-                                <th className="px-6 pb-3 font-medium">Action</th>
+                                <th className="px-6 pb-3 font-medium">Delete</th>
+                                <th className="px-6 pb-3 font-medium">Edit</th>
                             </tr>
                         </thead>
                         <tbody>

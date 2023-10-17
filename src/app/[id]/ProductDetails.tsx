@@ -47,10 +47,10 @@ const ProductDetails = ({course}: {  course: IProduct  }) => {
   }
   
   return (
-   <div className='flex flex-col'>
+   <div className='flex sm:flex-row'>
       <div className='lg:w-4/5'>
         <section className="overflow-hidden bg-white py-6 font-poppins dark:bg-gray-800">
-        <div className="max-w-6xl px-4 py-4 mx-auto lg:py-6 md:px-6">
+        <div className="max-w-6xl px-4 py-2 mx-auto lg:py-2 md:px-6">
             <div className="flex flex-wrap -mx-4">
                 <div className="w-full px-4">
                     <div className="sticky top-0 z-50 overflow-hidden ">
@@ -61,7 +61,7 @@ const ProductDetails = ({course}: {  course: IProduct  }) => {
                     </div>
                 </div>
                 <div className="w-full px-4 lg:flex">
-                    <div className="w-1/2">
+                    <div className="lg: w-1/2">
                         <div className="mb-4">
                             <span className="text-lg font-medium text-rose-500 dark:text-rose-200">{category}</span>
                             <h2 className="max-w-xl mt-2 mb-6 text-2xl font-bold dark:text-gray-600 md:text-4xl">{title}</h2>
@@ -112,14 +112,14 @@ const ProductDetails = ({course}: {  course: IProduct  }) => {
                         </div>
                         
                     </div>
-                    <div className='w-1/2 mt-8'>
+                    <div className='lg: w-1/2 mt-8'>
       <h1 className='my-2 text-2xl'>Reviews:</h1>
       <div>
         {
           reviews.map(
             (review,i) => (
             <div key={i}>
-             <h1 className='text-xl mb-1'> <CommentOutlined/> {review}</h1>
+             <h1 className='text-xl mb-1 text-justify'> <CommentOutlined/> {review}</h1>
             </div>
             )
           )

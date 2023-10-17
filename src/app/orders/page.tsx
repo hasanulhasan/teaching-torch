@@ -30,7 +30,7 @@ const page = () => {
   return (
     <div>
       <Nav/>
-      <section className="py-24 bg-gray-100 font-poppins dark:bg-gray-700">
+      <section className="py-10 bg-gray-100 font-poppins dark:bg-gray-700">
     <div className="px-4 py-4 mx-auto max-w-7xl lg:py-4 md:px-6">
         <div>
             <h2 className="mb-8 text-4xl font-bold dark:text-gray-400">Your Cart</h2>
@@ -52,15 +52,15 @@ const page = () => {
                         <div
                             className="flex items-center justify-between pb-4 mb-4 border-b border-gray-300 dark:border-gray-700 ">
                             <span className="text-gray-700 dark:text-gray-400">Subtotal</span>
-                            <span className="text-xl font-bold text-gray-700 dark:text-gray-400 ">{totalPrice}</span>
+                            <span className="text-xl font-bold text-gray-700 dark:text-gray-400 ">&#2547; {totalPrice}</span>
                         </div>
                         <div className="flex items-center justify-between pb-4 mb-4 ">
                             <span className="text-gray-700 dark:text-gray-400 ">Shipping</span>
-                            <span className="text-xl font-bold text-gray-700 dark:text-gray-400 ">50</span>
+                            <span className="text-xl font-bold text-gray-700 dark:text-gray-400">&#2547; 50</span>
                         </div>
                         <div className="flex items-center justify-between pb-4 mb-4 ">
                             <span className="text-gray-700 dark:text-gray-400">Order Total</span>
-                            <span className="text-xl font-bold text-gray-700 dark:text-gray-400">{totalPrice + 50}</span>
+                            <span className="text-xl font-bold text-gray-700 dark:text-gray-400">&#2547; {totalPrice + 50}</span>
                         </div>
                         <h2 className="text-lg text-gray-500 dark:text-gray-400">We offer:</h2>
                         <div className="flex items-center gap-2 mb-4 ">

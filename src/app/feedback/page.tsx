@@ -25,7 +25,7 @@ const FeedbackForm = () => {
     const {userName, rating, comment, email:userEmail} = data
     try {
       await postReview({userName, userEmail, rating, comment}).then(()=> {
-        message.success('Your review posted')
+        message.success('Your review posted! Thanks for your review!')
         reset()
       })
     } catch (error) {
@@ -80,10 +80,14 @@ const FeedbackForm = () => {
                             name="comment" placeholder="Write something..."></textarea>
             {errors.comment && <span className='text-danger-700'>This field is required</span>}
                     </div>
-                    <div className="mt-7">
+                    <div className="mt-7 flex">
                         <div className="flex justify-start space-x-2">
                             <button type="submit"
                                 className="inline-block px-6 py-2.5 bg-blue-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-600">Submit</button>
+                        </div>
+                        <div className="flex justify-start space-x-2">
+                            <button onClick={()=> reset()}
+                                className="inline-block px-6 py-2.5 bg-blue-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-600 ms-4">Reset</button>
                         </div>
                     </div>
                 </form>

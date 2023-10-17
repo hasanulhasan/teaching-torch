@@ -1,12 +1,23 @@
 'use client'
-
+import { useGetOrdersQuery } from "@/redux/features/orderApi";
 import { useAppSelector } from "@/redux/hooks";
 import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
-import { Menu } from "antd";
+import { Badge, Menu } from "antd";
 import Link from "next/link";
+import IOrder from '@/Types';
 
 function AppHeader() {
-  const {user} = useAppSelector(state => state.user)
+  const {user, isLoading:userIsLoading} = useAppSelector(state => state.user)
+  const {data, isLoading, isError} = useGetOrdersQuery(null);
+  const orders: IOrder[] = data?.data
+  let totalOrder:number = 0;
+  if (!isLoading && !userIsLoading && !isError && orders?.length > 0) { 
+    orders.filter(order => {
+        if(order.userEmail === user?.email){
+          totalOrder = totalOrder + 1
+        }
+    })
+  }
 
   const onMenuClick = () => {
   };
@@ -63,10 +74,13 @@ function AppHeader() {
       {
         user?.email? <>
         <div className="flex">
-      <Link href='/orders' className="cursor-pointer"><ShoppingCartOutlined style={{fontSize: '28px'}}/></Link>
-      <Link href='/profile'><UserOutlined style={{fontSize: '28px', paddingLeft: '10px',
-      paddingRight: '10px'
-    }}/></Link>
+        <Badge count={totalOrder} size="small" color="blue">
+          <Link href='/orders' className="cursor-pointer"><ShoppingCartOutlined style={{fontSize: '28px'}}/></Link>
+       </Badge>
+        <Link href='/profile'><UserOutlined style={{fontSize: '28px', paddingLeft: '10px',
+        paddingRight: '10px'
+      }}/>
+      </Link>
       </div>
         </> : <>
         <div>
