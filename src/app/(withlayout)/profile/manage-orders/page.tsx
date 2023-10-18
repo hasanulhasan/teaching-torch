@@ -46,7 +46,7 @@ const ManageOrders = () => {
     </td>
     <td className="px-6 py-5 ">
         <button
-            className="px-4 py-2 font-medium text-gray-900 border border-blue-500 rounded-md dark:text-blue-300 dark:border-blue-300 dark:hover:bg-blue-300 dark:hover:text-gray-700 hover:text-green-100 hover:bg-green-500">Payment
+            className="px-4 py-2 font-medium text-gray-900 border border-blue-500 rounded-md dark:text-blue-300 dark:border-blue-300 dark:hover:bg-blue-300 dark:hover:text-gray-700 hover:text-green-100 hover:bg-green-500">Pay now
         </button>
     </td>
     <td className="px-6 py-5 ">
@@ -74,7 +74,7 @@ const ManageOrders = () => {
                                 <th className="px-6 pb-3 font-medium">Course Category</th>
                                 <th className="px-6 pb-3 font-medium">Available Status</th>
                                 <th className="px-6 pb-3 font-medium">Payment Status</th>
-                                <th className="px-6 pb-3 font-medium">Pay Now</th>
+                                <th className="px-6 pb-3 font-medium">Payment</th>
                                 <th className="px-6 pb-3 font-medium">Action</th>
                             </tr>
                         </thead>

@@ -16,7 +16,7 @@ const Counters = () => {
         {/* @ts-ignore */}
             <ScrollTrigger onEnter={()=> setCounterOn(true)} onExit={()=>setCounterOn(false)}>
                 <div className='flex flex-col lg:flex-row items-center justify-around my-8 text-center'>
-                    <div className='border-2 border-gray-200 py-5 px-16 rounded-lg'>
+                    <div className='border-2 border-gray-200 py-5 px-16 rounded-lg sm: mt-2'>
                         <div className='flex items-center gap-3'>
                             <BookOutlined style={{ fontSize: '36px'}}/>
                             <h1 className='text-4xl font-bold'>
@@ -27,7 +27,7 @@ const Counters = () => {
                         <p className='ms-1 mt-1'>FOREIGN FOLLOWERS</p>
                     </div>
                     {/* 2 */}
-                    <div className='border-2 border-gray-200 py-5 px-16 rounded-lg'>
+                    <div className='border-2 border-gray-200 py-5 px-16 rounded-lg sm: mt-2'>
                         <div className='flex items-center gap-3'>
                             <ReadOutlined style={{ fontSize: '36px'}}/>
                             <h1 className='text-4xl font-bold'>
@@ -38,7 +38,7 @@ const Counters = () => {
                         <p className='ms-1 mt-1'>CLASSES COMPLETE</p>
                     </div>
                     {/* 3 */}
-                    <div className='border-2 border-gray-200 py-5 px-16 rounded-lg'>
+                    <div className='border-2 border-gray-200 py-5 px-16 rounded-lg sm: mt-2'>
                         <div className='flex items-center gap-3'>
                             <MacCommandOutlined style={{ fontSize: '36px'}}/>
                             <h1 className='text-4xl font-bold'>
@@ -49,7 +49,7 @@ const Counters = () => {
                         <p className='ms-1'>STUDENTS ENROLLED</p>
                     </div>
                     {/* 4 */}
-                    <div className='border-2 border-gray-200 py-5 px-16 rounded-lg'>
+                    <div className='border-2 border-gray-200 py-5 px-16 rounded-lg sm: mt-2'>
                         <div className='flex items-center gap-3'>
                             <SafetyCertificateOutlined style={{ fontSize: '36px'}}/>
                             <h1 className='text-4xl font-bold'>

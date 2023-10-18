@@ -5,11 +5,6 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
-import { useEffect } from 'react'
-import { setLoading, setUser } from '@/redux/features/userSlice'
-import { onAuthStateChanged } from 'firebase/auth'
-import { auth } from '@/components/Auth/Firebase'
-import { useAppDispatch } from '@/redux/hooks';
 
 const metadata: Metadata = {
   title: 'Teaching Torch',
@@ -22,18 +17,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
 
-  // const dispatch = useAppDispatch();
-  //   useEffect(()=> {
-  //     dispatch(setLoading(true))
-  //     onAuthStateChanged(auth, (user) => {
-  //       if (user) {
-  //         dispatch(setUser(user.email));
-  //         dispatch(setLoading(false))
-  //       } else {
-  //         dispatch(setLoading(false))
-  //       }
-  //     });
-  //   },[dispatch])
+  
 
   return (
     <Providers>

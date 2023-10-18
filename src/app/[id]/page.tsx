@@ -18,7 +18,7 @@ const ProductDetailsPage = () => {
   return (
     <div>
         { content }
-  </div>
+    </div>
   );
 };
 

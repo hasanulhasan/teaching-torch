@@ -55,10 +55,10 @@ const Course = ({course}: {  course: IProduct  }) => {
                         <span className="text-sm text-gray-600 dark:text-gray-400">{instructors[0]}</span>
                     </div>
                     <h2 className="mb-3 text-lg font-medium text-gray-700 dark:text-gray-400">
-                        {description} ...
+                        {(description).slice(0,30)}...
                     </h2>
                     <div className='my-1'>
-                    <span>Rating <Rate allowHalf defaultValue={Number(rating)} /></span>
+                    <span><Rate allowHalf defaultValue={Number(rating)} /></span>
                     </div>
                     <div className="flex items-center justify-between ">
                         <div className="flex items-center">

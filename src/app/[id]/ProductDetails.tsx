@@ -47,8 +47,8 @@ const ProductDetails = ({course}: {  course: IProduct  }) => {
   }
   
   return (
-   <div className='flex sm:flex-row'>
-      <div className='lg:w-4/5'>
+   <div className='flex flex-row'>
+      <div className='lg: w-4/5'>
         <section className="overflow-hidden bg-white py-6 font-poppins dark:bg-gray-800">
         <div className="max-w-6xl px-4 py-2 mx-auto lg:py-2 md:px-6">
             <div className="flex flex-wrap -mx-4">
@@ -100,6 +100,16 @@ const ProductDetails = ({course}: {  course: IProduct  }) => {
                                 </button>
                             </div>
                         </div>
+                        <div className="flex flex-col mb-2">
+                                <h2 className="max-w-xl mb-1 text-xl font-bold text-gray-600 md:text-lg">Course Features</h2>
+                            <div className="flex flex-col mb-2">
+                                {
+                                  features.map((feature,i)=> <button key={i}
+                                    className="py-1 mb-2 mr-1 w-1/2 border rounded-lg bg-blue-200 hover:border-blue-400 dark:border-gray-400 hover:text-blue-600 dark:hover:border-gray-300 dark:text-gray-400">{feature}
+                                </button>)
+                                }
+                            </div>
+                        </div>
 
                         <div className="flex flex-wrap items-center -mx-4 ">
                             <div className="w-full px-4 mb-4 lg:w-1/2 lg:mb-0">
@@ -142,7 +152,7 @@ const ProductDetails = ({course}: {  course: IProduct  }) => {
         </div>
         </section>
     </div> 
-    <div className='lg:w-1/5 my-11 px-6'>
+    <div className='lg: w-1/5 my-11 px-6 '>
           <h1 className='text-center text-lg font-semibold mb-2'>Related products</h1>
           {
             content

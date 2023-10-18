@@ -37,8 +37,7 @@ const FeedbackPage = () => {
         </button>
     </td>
     <td className="px-6 py-5 ">
-        <button onClick={()=> handleFeedback(feedback._id!)}
-            className="px-4 py-2 font-medium text-gray-700 border border-blue-500 rounded-md dark:text-blue-300 dark:border-blue-300 dark:hover:bg-blue-300 dark:hover:text-gray-700 hover:text-danger-100 hover:bg-green-500">Edit
+        <button className="px-4 py-2 font-medium text-gray-700 border border-blue-500 rounded-md dark:text-blue-300 dark:border-blue-300 dark:hover:bg-blue-300 dark:hover:text-gray-700 hover:text-danger-100 hover:bg-green-500">Edit
         </button>
     </td>
 </tr>)}
