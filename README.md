@@ -25,3 +25,12 @@ https://github.com/hasanulhasan/teaching-torch
 ### `Back End`
 
 https://github.com/hasanulhasan/teaching-torch-backend
+
+</br></br>
+## Try as Admin  </br>
+Email: hasanulkarimh@gmail.com </br>
+Password: 123456 </br>
+
+## Try as User  </br>
+Email: gdbd1971@gmail.com </br>
+Password: 123456 </br>
