@@ -2,11 +2,12 @@
 import Loading from "@/app/loading";
 import { message } from "antd";
 import IUser from '@/Types';
-import { useDeleteUserMutation, useGetUsersQuery } from "@/redux/features/userApi";
+import { useDeleteUserMutation, useEditUserMutation, useGetUsersQuery } from "@/redux/features/userApi";
 
 const ManageUsers = () => {
   const {data, isLoading, isError} = useGetUsersQuery(null);
   const [deleteUser] = useDeleteUserMutation();
+  const [editUser] = useEditUserMutation();
   const users:IUser[] = data?.data
 
   const handleDeleteUser = async (id: string) => {
@@ -18,6 +19,18 @@ const ManageUsers = () => {
         console.log(error)
         message.error('There is an error')
       }
+  }
+
+  const handleRoleChange = async (id: string, data: string) => {
+    console.log(id, data)
+    try {
+      await editUser({id: id, data: {role: data}}).then(()=> {
+        message.success('Role Changed')
+      })
+    } catch (error) {
+      console.log(error)
+      message.error('There is an error')
+    }
   }
 
   let content = null;
@@ -33,6 +46,15 @@ const ManageUsers = () => {
         <button onClick={()=> handleDeleteUser(user._id!)}
             className="px-4 py-2 font-medium text-blue-500 border border-blue-500 rounded-md dark:text-blue-300 dark:border-blue-300 dark:hover:bg-blue-300 dark:hover:text-gray-700 hover:text-danger-100 hover:bg-danger-500">Delete
         </button>
+    </td>
+    <td className="px-6 py-5 ">
+        <select value={user.role}
+        onChange={e => handleRoleChange(user._id!, e.target.value)}
+            className="px-4 py-2 font-medium text-gray-500 border border-blue-500 rounded-md dark:text-blue-300 dark:border-blue-300 dark:hover:bg-blue-300 dark:hover:text-gray-700"
+            name="field-name">
+            <option>admin </option>
+            <option>user</option>
+        </select>
     </td>
 </tr>)}
 
@@ -51,7 +73,8 @@ const ManageUsers = () => {
                                 <th className="px-6 pb-3 font-medium">Name</th>
                                 <th className="px-6 pb-3 font-medium ">Email</th>
                                 <th className="px-6 pb-3 font-medium">Role</th>
-                                <th className="px-6 pb-3 font-medium">Action</th>
+                                <th className="px-6 pb-3 font-medium">Delete User</th>
+                                <th className="px-6 pb-3 font-medium">Change Role</th>
                             </tr>
                         </thead>
                         <tbody>
