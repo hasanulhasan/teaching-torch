@@ -26,7 +26,7 @@ const ManageOrders = () => {
   if (!isLoading && !isError && orders?.length === 0) content = <p className='text-lg text-destructive'>There is no Order</p>;
   if (!isLoading && !isError && orders?.length > 0) { content = orders
     .map(order => <tr key={order._id} className="text-xs bg-gray-100 dark:text-gray-400 dark:bg-gray-800">
-    <td className="px-6 py-5 font-medium">{order.title}</td>
+    <td className="px-6 py-5 font-extrabold">{order.title}</td>
     <td className="px-6 py-5 font-medium">{order.userEmail}</td>
     <td className="px-6 py-5 font-medium ">{order.price}</td>
     <td className="px-6 py-5 font-medium ">{order.category}</td>

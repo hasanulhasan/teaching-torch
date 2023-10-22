@@ -4,13 +4,13 @@ An Ed-Teach Website for Course and Learning Service
 
 ## Project feature
 
-1- User can see Courses, course details and see related Courses</br>
+1- User can see Courses, Course details, Course Reviews and see related Courses</br>
 2- Logged in user can place Order, Review of Courses and leave a feedback</br>
-3- User can filter Courses by Search and see orders in Cart</br>
+3- User can filter Courses by Search and See orders in Cart</br>
 4- User can sort Courses by Price and Category</br>
 5- User and Admin can maintain a Dashboard</br>
-6- From Dashboard User can manage his orders, feedbacks and profile option</br>
-7- From Dashboard Admin can manage all orders, feedbacks, user permission and profile option</br>
+6- From Dashboard User can manage his Orders, Feedbacks and profile option</br>
+7- From Dashboard Admin can manage all Orders, Feedbacks, User permission and profile option</br>
 8- Site is fully responsive</br>
 
 ### `Technology used:`
@@ -20,17 +20,18 @@ An Ed-Teach Website for Course and Learning Service
 
 ### `Live link`
 
-https://github.com/hasanulhasan/teaching-torch
+https://teaching-torch-c1dfe96h8-hasanulhasan.vercel.app/
 
 ### `Back End`
 
 https://github.com/hasanulhasan/teaching-torch-backend
 
-</br></br>
-## Try as Admin  </br>
+### `Try as Admin`
+
 Email: hasanulkarimh@gmail.com </br>
 Password: 123456 </br>
 
-## Try as User  </br>
+### `Try as User`
+
 Email: gdbd1971@gmail.com </br>
 Password: 123456 </br>

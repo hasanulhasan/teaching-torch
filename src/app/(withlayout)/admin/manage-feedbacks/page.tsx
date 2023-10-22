@@ -26,10 +26,10 @@ const FeedbackPage = () => {
   if (!isLoading && !isError && feedbacks?.length === 0) content = <p className='text-lg text-destructive'>There is no Feedback</p>;
   if (!isLoading && !isError && feedbacks?.length > 0) { content = feedbacks
     .map(feedback => <tr key={feedback._id} className="text-xs bg-gray-100 dark:text-gray-400 dark:bg-gray-800">
-    <td className="px-6 py-5 font-medium">{feedback.userName}</td>
+    <td className="px-6 py-5 font-extrabold">{feedback.userName}</td>
     <td className="px-6 py-5 font-medium">{feedback.userEmail}</td>
-    <td className="px-6 py-5 font-medium">{feedback.comment}</td>
-    <td className="px-6 py-5 font-medium ">{feedback.rating}</td>
+    <td className="px-6 py-5 font-medium text-justify">{feedback.comment}</td>
+    <td className="px-6 py-5 font-bold text-center">{feedback.rating}</td>
     <td className="px-6 py-5 ">
         <button onClick={()=> handleFeedback(feedback._id!)}
             className="px-4 py-2 font-medium text-blue-500 border border-blue-500 rounded-md dark:text-blue-300 dark:border-blue-300 dark:hover:bg-blue-300 dark:hover:text-gray-700 hover:text-danger-100 hover:bg-danger-500">Delete

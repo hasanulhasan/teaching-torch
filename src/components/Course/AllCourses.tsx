@@ -13,32 +13,50 @@ const AllCourses = () => {
   const {search, sort, price} = useAppSelector(state => state.filter)
   const dispatch = useAppDispatch();
 
+  const filterByCategory = (course: IProduct) => {
+    if (sort === 'Programming') {
+      return (course.category === sort)
+    }
+    else if (sort === 'Graphics') {
+      return (course.category === sort)
+    }
+    else if (sort === 'Video') {
+      return (course.category === sort)
+    }
+    else if (sort === 'Marketing') {
+      return (course.category === sort)
+    }
+    else {
+      return course
+    }
+  }
+  const filterBySearch = (course: IProduct) => {
+    if (search) {
+      return course.title.toLowerCase().includes(search.toLowerCase())
+    }
+    else {
+      return course
+    }
+  }
+  const SortByPrice = (courses:IProduct[]) => {
+    if (price === 'asc') { return courses.sort((a,b)=> { return Number(a.price) - Number(b.price) }) }
+    else if (price === 'dec') {  return courses.sort((a,b)=> { return Number(b.price) - Number(a.price) }) }
+    else { return courses }
+  }
+
   let content = null;
   if (isLoading) content = <Loading/>
   if (!isLoading && isError) content = <p className='text-lg text-destructive text-center'>There is an error</p>;
   if (!isLoading && !isError && courses?.length === 0) content = <p className='text-lg text-destructive'>There is no Course</p>;
   if (!isLoading && !isError && courses?.length > 0) {
-    content = courses.filter((course: IProduct) => {
-      if (sort === 'Programming') {
-        return (course.category === sort)
-      }
-      else if (sort === 'Graphics') {
-        return (course.category === sort)
-      }
-      else if (sort === 'Video') {
-        return (course.category === sort)
-      }
-      else if (sort === 'Marketing') {
-        return (course.category === sort)
-      }
-      else {
-        return course
-      }
-    }).sort((a, b) => {
-      if (price === 'asc') { return (Number(a.price) - Number(b.price)) }
-      else if (price === 'dec') { return (Number(b.price) - Number(a.price))  }
-      else { return 0 }
-    }).filter(course => course.title.toLowerCase().includes(search.toLowerCase())).map(course => <Course key={course._id} course={course} />)}
+    const CoursesToShow = SortByPrice( courses.filter(filterByCategory).filter(filterBySearch) )
+    content =  CoursesToShow.length > 0 ? (
+      CoursesToShow.map(course => <Course key={course._id} course={course} />)) 
+    : 
+    (
+      <p className="my-4 text-xl font-bold dark:text-white text-center">No Course was found</p>
+    ) 
+  }
 
   return (
     <section className="flex items-center bg-gray-100 py-10 font-poppins dark:bg-gray-900 ">

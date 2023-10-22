@@ -2,7 +2,7 @@
 'use client'
 
 import { Button, MenuProps, message } from "antd";
-import {CommentOutlined, LogoutOutlined, TableOutlined, UserOutlined, UserSwitchOutlined} from "@ant-design/icons"
+import {CommentOutlined, LogoutOutlined, PieChartFilled, TableOutlined, UserOutlined, UserSwitchOutlined} from "@ant-design/icons"
 import Link from "next/link";
 import { useAppDispatch } from "@/redux/hooks";
 import { signOut } from "firebase/auth";
@@ -45,6 +45,7 @@ export const sidebarItems = (role: string) => {
       key: `/logout`,
     }
   ];
+
   const adminSideBarItems: MenuProps["items"] = [
     {
       label: <Link href={`/profile`}>Profile</Link>,
@@ -57,7 +58,7 @@ export const sidebarItems = (role: string) => {
       key: `/manage-order`,
     },
     {
-      label: <Link href={`/admin/manage-feedback`}>User Feedbacks</Link>,
+      label: <Link href={`/admin/manage-feedbacks`}>User Feedbacks</Link>,
       icon: <CommentOutlined />,
       key: `/manage-feedback`,
     },
@@ -65,6 +66,11 @@ export const sidebarItems = (role: string) => {
       label: <Link href={`/admin/manage-users`}>Manage User</Link>,
       icon: <UserSwitchOutlined />,
       key: `/manage-users`,
+    },
+    {
+      label: <Link href={`/admin/manage-courses`}>Manage Courses</Link>,
+      icon: <PieChartFilled />,
+      key: `/manage-courses`,
     },
     {
       label: <p onClick={()=> handleLogout()} style={{color: 'red'}}>Logout</p>,
