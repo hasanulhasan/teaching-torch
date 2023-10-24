@@ -3,7 +3,7 @@ import Course from "./Course";
 import Loading from "@/app/loading";
 import IProduct from "@/Types";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { priceSort, searchParam, sortType } from "@/redux/features/filterSlice";
+import { priceSort, searchParam, sortType } from "@/redux/features/filter/filterSlice";
 import { useGetProductsQuery } from "@/redux/features/productApi";
 
 const AllCourses = () => {

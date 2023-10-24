@@ -17,7 +17,7 @@ const DashboardLayout = ({children}: {children: React.ReactNode}) => {
     if(!user?.email && !isLoading){
       router.push('/login')
     }
-  }, [user?.email, isLoading])
+  }, [user?.email])
 
   return (
     <>
