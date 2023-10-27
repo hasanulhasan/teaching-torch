@@ -57,6 +57,7 @@ const ManageOrders = () => {
             <div className="pt-4 bg-white rounded shadow dark:bg-gray-900">
                 <div className="flex px-6 pb-4 border-b dark:border-gray-700">
                     <h2 className="text-xl font-bold dark:text-gray-400">Customers Orders</h2>
+                    <h2>Add Course</h2>
                 </div>
                 <div className="p-4 overflow-x-auto">
                     <table className="w-full table-auto">
