@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 import { Rate } from 'antd';
-import React from 'react';
+import React, { useState } from 'react';
 import { SubmitHandler, useForm ,Controller} from 'react-hook-form';
 
 type Inputs = {
@@ -18,11 +18,26 @@ type Inputs = {
 }
 
 const AddCoursePage = () => {
+    const [title, setTitle] = useState('');
+    const [instructors, setInstructors] = useState<string[]>([]);
+    const [img, setImg] = useState('');
+    const [category, setCategory] = useState('');
+    const [seat, setSeat] = useState('');
+    const [rating, setRating] = useState('');
+    const [status, setStatus] = useState('');
+    const [description, setDescription] = useState('');
+    const [features, setFeatures] = useState([]);
+
     const { register, handleSubmit, control, reset, formState: { errors }} = useForm<Inputs>()
 
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         console.log(data)
       }
+
+    const handleForm = (e:any) => {
+        e.preventDefault()
+        console.log(title, instructors)
+    }
 
   return (
     <div>
@@ -31,13 +46,13 @@ const AddCoursePage = () => {
             <div className="p-6 bg-white rounded-md shadow dark:border-gray-800 dark:bg-gray-900">
                 <h2 className="mb-6 text-xl font-medium leading-6 text-gray-900 dark:text-gray-300">Course Information
                 </h2>
-                <form onSubmit={handleSubmit(onSubmit)} className="">
+                <form onSubmit={handleForm} className="">
                     <div className="container px-4 mx-auto"></div>
                     <div className="mb-6">
                         <label className="block mb-2 text-sm font-medium dark:text-gray-400" htmlFor="">
                             Course Title
                         </label>
-                        <input {...register("title", { required: true })}
+                        <input onChange={(e)=> setTitle(e.target.value)} value={title}
                             className="block w-full px-4 py-3 mb-2 text-sm placeholder-gray-500 bg-white border rounded dark:text-gray-400 dark:placeholder-gray-500 dark:border-gray-800 dark:bg-gray-800"
                             type="text" name="title" placeholder="Write course title"/>
                     </div>
@@ -45,18 +60,19 @@ const AddCoursePage = () => {
                         <label className="block mb-2 text-sm font-medium dark:text-gray-400" htmlFor="">
                             Instructors
                         </label>
-                        <input 
+                        <input onChange={(e)=> setInstructors(e.target.value)} value={instructors[0]}
                             className="block w-full px-4 py-3 mb-2 text-sm placeholder-gray-500 bg-white border rounded dark:text-gray-400 dark:placeholder-gray-500 dark:border-gray-800 dark:bg-gray-800"
-                            type="text" name={`instructors${[0]}`} placeholder="Instructor - 1"/>
-                        <input
+                            type="text" name="instructors" placeholder="Instructor - 1"/>
+                        <input onChange={(e)=> setInstructors(e.target.value)} value={instructors[1]}
                             className="block w-full px-4 py-3 mb-2 text-sm placeholder-gray-500 bg-white border rounded dark:text-gray-400 dark:placeholder-gray-500 dark:border-gray-800 dark:bg-gray-800"
-                            type="text" name="instructors[1]" placeholder="Instructor - 2"/>
+                            type="text" name="instructors" placeholder="Instructor - 2"/>
                     </div>
                     <div className="mb-6">
                         <label className="block mb-2 text-sm font-medium dark:text-gray-400" htmlFor="">
                             Course Image
                         </label>
-                        <input {...register("img", { required: true })}
+                        <input 
+                        // {...register("img", { required: true })}
                             className="block w-full px-4 py-3 mb-2 text-sm placeholder-gray-500 bg-white border rounded dark:text-gray-400 dark:placeholder-gray-500 dark:border-gray-800 dark:bg-gray-800"
                             type="text" name="img" placeholder="Course Image URL"/>
                     </div>
@@ -65,7 +81,8 @@ const AddCoursePage = () => {
                     <div>
                         <label className="block mb-2 text-sm font-medium dark:text-gray-400" htmlFor="">Category</label>
                         <div className="relative">
-                            <select {...register("category", { required: true })}
+                            <select 
+                            // {...register("category", { required: true })}
                                 className="block w-full px-4 py-3 mb-2 text-sm placeholder-gray-500 bg-white border rounded appearance-none dark:text-gray-400 dark:border-gray-900 dark:bg-gray-800"
                                 name="category">
                                 <option value='Programming'>Programming</option>
@@ -87,7 +104,8 @@ const AddCoursePage = () => {
                     <div>
                         <label className="block mb-2 text-sm font-medium dark:text-gray-400" htmlFor="">Rating</label>
                         <div className="relative">
-                            <select {...register("rating", { required: true })}
+                            <select 
+                            // {...register("rating", { required: true })}
                                 className="block w-full px-4 py-3 mb-2 text-sm placeholder-gray-500 bg-white border rounded appearance-none dark:text-gray-400 dark:border-gray-900 dark:bg-gray-800"
                                 name="rating">
                                 <option value='1'>1</option>
@@ -110,14 +128,16 @@ const AddCoursePage = () => {
                         <div> <label className="block mb-2 text-sm font-medium dark:text-gray-400" htmlFor="">
                             Price
                         </label>
-                        <input {...register("price", { required: true })}
+                        <input 
+                        // {...register("price", { required: true })}
                             className="block w-full px-4 py-3 mb-2 text-sm placeholder-gray-500 bg-white border rounded dark:text-gray-400 dark:placeholder-gray-500 dark:border-gray-800 dark:bg-gray-800"
                             type="text" name="price" placeholder="Enter Price"/>
                         </div>
                         <div> <label className="block mb-2 text-sm font-medium dark:text-gray-400" htmlFor="">
                             Seat Available
                         </label>
-                        <input {...register("seat", { required: true })}
+                        <input 
+                        // {...register("seat", { required: true })}
                             className="block w-full px-4 py-3 mb-2 text-sm placeholder-gray-500 bg-white border rounded dark:text-gray-400 dark:placeholder-gray-500 dark:border-gray-800 dark:bg-gray-800"
                             type="text" name="seat" placeholder="Enter seat"/>
                         </div>
@@ -146,7 +166,8 @@ const AddCoursePage = () => {
                     </div>
                     <div className="mb-6">
                         <label className="block mb-2 text-sm font-medium dark:text-gray-400" htmlFor="">Description</label>
-                        <textarea {...register("description", { required: true })}
+                        <textarea 
+                        // {...register("description", { required: true })}
                             className="block w-full px-4 py-3 mb-2 text-sm placeholder-gray-500 bg-white border rounded dark:text-gray-400 dark:border-gray-900 dark:bg-gray-800"
                             name="description" placeholder="Write description..."></textarea>
                     </div>
